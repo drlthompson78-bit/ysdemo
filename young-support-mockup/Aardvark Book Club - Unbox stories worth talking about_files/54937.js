@@ -2254,6 +2254,8 @@ barba.use(barbaPrefetch, {
 });
 
 barba.init({
+  // YS renders its content on a full document load. Never swap raw template HTML.
+  prevent: () => true,
   debug: false, // Set to 'false' in production
   timeout: 7000,
   preventRunning: true,
