@@ -1,0 +1,13 @@
+.ys-site-footer__column a, .ys-site-footer__address a, .legal-footer nav a, .legal-header nav a { background-image:linear-gradient(currentColor,currentColor); background-repeat:no-repeat; background-position:left bottom; background-size:0% 1px; transition:background-size .35s ease; text-decoration:none !important; }
+.ys-site-footer__column a:is(:hover,:focus-visible,:active,.ys-link-selected), .ys-site-footer__address a:is(:hover,:focus-visible,:active,.ys-link-selected), .legal-footer nav a:is(:hover,:focus-visible,:active,.ys-link-selected), .legal-header nav a:is(:hover,:focus-visible,:active,.ys-link-selected) { background-size:100% 1px; }
+.ys-legal-arrival::before { content:""; position:fixed; inset:0; z-index:2147483646; background:#dfeade; }
+.ys-legal-arrival::after { content:""; position:fixed; z-index:2147483647; left:50%; top:50%; transform:translate(-50%,-50%); width:clamp(80px, 10vw, 144px); aspect-ratio:1; background:url('./young-support-mark-vector.svg?v=20260914-smooth2') center/contain no-repeat; pointer-events:none; }
+.ys-legal-wipe { position:fixed; inset:0; z-index:2147483647; overflow:hidden; pointer-events:auto; display:grid; place-items:center; color:#dfeade; }
+.ys-legal-wipe__shape { position:absolute; width:100%; aspect-ratio:1; }
+.ys-legal-wipe__shape svg { position:absolute; width:120%; height:120%; top:-10%; left:-10%; overflow:visible; }
+.ys-legal-wipe__logo { position:relative; width:clamp(80px, 10vw, 144px); height:auto; }
+@media(max-width:767px) {
+  .ys-legal-wipe__shape { height:100%; aspect-ratio:auto; }
+  .ys-legal-wipe__shape svg { width:230%; height:120%; left:-65%; }
+}
+@media(prefers-reduced-motion:reduce) { .ys-legal-arrival::before,.ys-legal-arrival::after { display:none; } }

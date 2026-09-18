@@ -1,0 +1,5 @@
+/* One transform owner keeps the portrait glide free from parallax interference. */
+#contact.ys-contact-scroll .ys-site-footer__visual{position:relative!important;z-index:3;transform:translate3d(var(--contact-x,0px),0,0) rotate(1.5deg)!important;transition:none!important;will-change:transform;pointer-events:none}
+#contact.ys-contact-scroll .ys-site-footer__contact-button:focus-visible{opacity:1!important}
+@media(max-width:1023px){#contact.ys-contact-scroll .ys-site-footer__visual{justify-self:end!important;margin-left:auto!important;margin-right:0!important}}
+@media(max-width:767px){#contact.ys-contact-scroll .ys-site-footer__visual{width:min(74%,280px)!important}}

@@ -1,0 +1,32 @@
+/* Four simultaneously visible desktop cards, inspired by the Truus service row. */
+@media (min-width:768px) {
+  .ys-photo-demo .ys-demo-grid {
+    display:flex; align-items:flex-start; gap:0; isolation:isolate;
+    max-width:1680px; width:100%; box-sizing:border-box;
+    padding:3rem 7% 5rem !important;
+  }
+  .ys-demo-grid > .ys-demo-card:nth-child(n) {
+    position:relative; flex:0 0 26.5%; width:26.5%; margin:0;
+    transform-origin:50% 50%; overflow:hidden;
+    transform:translateY(var(--desktop-drop)) rotate(var(--desktop-tilt));
+  }
+  .ys-demo-grid > .ys-demo-card + .ys-demo-card { margin-left:-2%; }
+  .ys-demo-grid > .ys-demo-card:nth-child(1) { --desktop-drop:0%; --desktop-tilt:-2deg; }
+  .ys-demo-grid > .ys-demo-card:nth-child(2) { --desktop-drop:0%; --desktop-tilt:1.5deg; }
+  .ys-demo-grid > .ys-demo-card:nth-child(3) { --desktop-drop:0%; --desktop-tilt:-1.5deg; }
+  .ys-demo-grid > .ys-demo-card:nth-child(4) { --desktop-drop:0%; --desktop-tilt:2deg; }
+  .ys-demo-grid .ys-demo-copy { padding:1.35rem 1.1rem 1.2rem; }
+  .ys-demo-grid .ys-demo-copy h3 { font-size:clamp(1.25rem,2.2vw,2.3rem); overflow-wrap:anywhere; }
+  .ys-demo-grid .ys-demo-play { aspect-ratio:4/4.2; }
+  .ys-demo-grid .ys-demo-play-label,
+  .ys-demo-grid .ys-demo-step,
+  .ys-demo-grid .ys-demo-progress { display:none; }
+  .ys-demo-grid > .ys-demo-card { filter:grayscale(1); transition:filter .3s ease; }
+  .ys-demo-grid > .ys-demo-card.is-desktop-color,
+  .ys-demo-grid:not(.is-desktop-ready) > .ys-demo-card:first-child { filter:grayscale(0); }
+  @media (prefers-reduced-motion:reduce) {
+    .ys-demo-grid > .ys-demo-card { transition:none; }
+  }
+  .ys-demo-grid .ys-demo-sticker { left:.65rem; font-size:1rem; }
+  .ys-demo-grid > .ys-demo-card:focus-within { z-index:10; }
+}

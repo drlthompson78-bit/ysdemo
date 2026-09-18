@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Young Support YS-logo</title>
+  <desc id="desc">Rond donkerblauw beeldmerk met een witte Y en zachtgroene S.</desc>
+  <circle cx="500" cy="500" r="500" fill="#11345c"/>
+  <path
+    d="M235 250 L430 510 M650 245 L430 510 M430 510 L430 795"
+    fill="none"
+    stroke="#fffdfc"
+    stroke-width="142"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M705 425 C642 370 540 389 534 472 C528 543 586 568 649 590 C720 615 750 680 724 748 C698 818 598 844 521 791"
+    fill="none"
+    stroke="#90ae94"
+    stroke-width="126"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

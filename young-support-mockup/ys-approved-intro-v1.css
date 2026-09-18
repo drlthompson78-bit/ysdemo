@@ -1,0 +1,15 @@
+.ys-approved-host { background:transparent !important; clip-path:none !important; }
+.ys-approved-intro { position:absolute; inset:0; overflow:hidden; background:#dfeade; container-type:inline-size; }
+.ys-approved-intro.is-ready { background:transparent; }
+.ys-approved-backdrop { position:absolute; inset:0; background:#dfeade; }
+.ys-approved-sweep { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; overflow:hidden; pointer-events:none; }
+.ys-approved-shape { position:absolute; width:100%; aspect-ratio:1; color:#dfeade; }
+.ys-approved-shape > svg { position:absolute; width:120%; height:120%; top:-10%; left:-10%; overflow:visible; }
+.ys-approved-stage { position:absolute; inset:0; }
+.ys-approved-stage > svg { display:block; width:100%; height:100%; }
+.ys-approved-skip { position:absolute; inset:0; z-index:1; display:block; width:100%; height:100%; padding:0; border:0; background:transparent; appearance:none; -webkit-appearance:none; cursor:pointer; pointer-events:auto; touch-action:manipulation; }
+.ys-approved-skip:focus-visible { outline:3px solid #082f62; outline-offset:-8px; }
+@container(max-width:540px) {
+  .ys-approved-shape { aspect-ratio:auto; height:100%; }
+  .ys-approved-shape > svg { width:230%; height:120%; top:-10%; left:-65%; }
+}

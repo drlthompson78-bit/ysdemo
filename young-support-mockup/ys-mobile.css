@@ -1,0 +1,512 @@
+/* Mobile composition for the Young Support mockup.
+   Keep it last in the cascade: the saved Aardvark stylesheet and the earlier
+   desktop adaptations both contain their own phone rules. */
+.ys-site-footer__pattern { display: none; }
+
+@media screen and (max-width: 767px) {
+  :root { --ys-mobile-gutter: clamp(1.125rem, 5vw, 1.5rem); }
+
+  html { scroll-padding-top: 5.5rem; }
+  body { overflow-x: clip; }
+  .main {
+    position: relative !important;
+    z-index: 2 !important;
+    background: #fffdf8 !important;
+  }
+
+  /* The masthead uses the same cream as page one, with no translucent seam. */
+  .header {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    height: 5rem !important;
+    background: #f7f3e9 !important;
+    border-bottom: 0 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .header__inner { height: 100% !important; }
+  .header__title {
+    top: .3rem !important;
+    left: var(--ys-mobile-gutter) !important;
+    width: clamp(9.5rem, 43vw, 11rem) !important;
+    translate: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  [data-scrolling-started="true"] .header__title {
+    translate: none !important;
+  }
+  .header__title-link,
+  .header__title .ys-brand,
+  .header__title .ys-brand__art {
+    display: flex !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .header__menu-toggle {
+    top: .85rem !important;
+    right: var(--ys-mobile-gutter) !important;
+  }
+  .header__menu-toggle .button-alt {
+    --button-alt-height: 3rem;
+    min-height: 3rem;
+  }
+  .menu__nav-list-item:last-child { display: none !important; }
+  .menu__content { overflow-y: auto !important; }
+  .menu__nav { margin-bottom: 1.2rem !important; }
+  .menu footer.menu__footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-end !important;
+    gap: .7rem !important;
+    width: 100% !important;
+    padding: 0 .35rem calc(1.35rem + env(safe-area-inset-bottom)) !important;
+  }
+  .menu__login { display: block !important; order: -1; width: 100%; }
+  .menu__login .button-alt {
+    --button-alt-height: 3.15rem;
+    --button-alt-padding-x: .9rem;
+    width: 100% !important;
+  }
+  .menu__login .button-alt__text-wrap { flex: 1 1 auto !important; }
+  .menu__login .button-alt__icon-wrap { flex: 0 0 3.15rem !important; }
+  .menu__login .button-alt__text { font-size: 1rem !important; white-space: nowrap; }
+  .menu__sub {
+    display: flex !important;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .ys-menu__social-label { margin: 0 !important; font-size: .65rem !important; }
+  .ys-menu__socials { justify-content: flex-end; gap: .4rem !important; }
+  .ys-menu__social { width: 2.7rem !important; height: 2.7rem !important; }
+
+  /* Page 1 — editorial text first, one self-contained image card second. */
+  .hero {
+    min-height: 0 !important;
+    margin-bottom: 1rem !important;
+    padding-bottom: 1.4rem !important;
+    border-radius: 0 0 2.25rem 2.25rem !important;
+    clip-path: none !important;
+  }
+  .hero__inner {
+    width: 100% !important;
+    padding-inline: var(--ys-mobile-gutter) !important;
+  }
+  .hero__content {
+    width: 100% !important;
+    padding: 7rem 0 0 !important;
+  }
+  .hero__title {
+    max-width: 100% !important;
+    font-size: clamp(3.15rem, 13.8vw, 4rem) !important;
+    line-height: .94 !important;
+    letter-spacing: -.052em !important;
+  }
+  .hero__paragraph {
+    max-width: 36ch !important;
+    margin-top: 1.25rem !important;
+    font-size: 1.08rem !important;
+    font-weight: 600 !important;
+    line-height: 1.48 !important;
+  }
+  .hero__content > .button-alt {
+    margin-top: 1.35rem !important;
+  }
+  .hero__visual {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 29rem !important;
+    height: auto !important;
+    aspect-ratio: 1.32 / 1 !important;
+    margin: 2rem auto 0 !important;
+    border: .5rem solid #fffdf8 !important;
+    border-radius: 5rem 5rem 1.35rem 1.35rem / 2.6rem 2.6rem 1.35rem 1.35rem !important;
+    transform: rotate(1deg) !important;
+  }
+  .hero__visual-img {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-position: center 42% !important;
+  }
+  .hero__visual::after {
+    display: block !important;
+    right: -8% !important;
+    bottom: -11% !important;
+    left: -8% !important;
+    height: 29% !important;
+    background: #f7f9ee !important;
+    transform: rotate(-3deg) !important;
+  }
+  .hero__visual .hero__text-wrap.is--inside-card {
+    position: absolute !important;
+    inset: auto 0 .4rem !important;
+    width: 100% !important;
+    height: 2.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .hero__visual .hero__text {
+    position: static !important;
+    font-size: clamp(.9rem, 3.8vw, 1.05rem) !important;
+    line-height: 1 !important;
+  }
+
+  /* Page 2 — vertical card deck, with natural page scrolling. */
+  .ys-flow {
+    width: 100% !important;
+    margin-bottom: 1.75rem !important;
+    padding-bottom: 1.5rem !important;
+    overflow: clip !important;
+    border-radius: 2.25rem !important;
+    scroll-margin-top: 5.5rem;
+  }
+  .ys-flow .flow__header {
+    padding: 4.8rem var(--ys-mobile-gutter) 1.5rem !important;
+  }
+  .ys-flow__eyebrow {
+    margin-bottom: 1rem !important;
+    font-size: .82rem !important;
+  }
+  .ys-flow .flow__title {
+    max-width: 100% !important;
+    font-size: clamp(2.8rem, 11.8vw, 3.55rem) !important;
+    letter-spacing: -.055em !important;
+    line-height: .95 !important;
+  }
+  .ys-flow__intro {
+    gap: .9rem !important;
+    margin-top: 1.45rem !important;
+    font-size: 1.04rem !important;
+    line-height: 1.52 !important;
+  }
+  .ys-flow__quote.u-handwritten-regular { display: none !important; }
+  .ys-flow__swipe-hint {
+    width: calc(100% - 2 * var(--ys-mobile-gutter)) !important;
+    margin: 1.4rem var(--ys-mobile-gutter) .8rem !important;
+    font-size: 1rem !important;
+  }
+  .ys-flow__swipe-hint span { display: none !important; }
+  .ys-flow .flow__content,
+  .ys-flow .flow__list {
+    --ys-card-shift: clamp(8px, 2.5vw, 12px);
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+  .ys-flow .flow__list {
+    display: block !important;
+    isolation: isolate;
+    padding: .25rem var(--ys-mobile-gutter) .5rem !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+  }
+  .ys-flow .flow__list-item,
+  .ys-flow .flow__list-item:first-child,
+  .ys-flow .flow__list-item:last-child {
+    flex: none !important;
+    position: sticky !important;
+    top: var(--ys-card-top, 5.75rem) !important;
+    height: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    transform: none !important;
+    scroll-snap-align: none !important;
+    margin: 0 0 2rem !important;
+  }
+  .ys-flow .flow__list-item:nth-child(1) { z-index: 1; }
+  .ys-flow .flow__list-item:nth-child(2) { z-index: 2; }
+  .ys-flow .flow__list-item:nth-child(3) { z-index: 3; }
+  .ys-flow .flow__list-item:nth-child(4) { z-index: 4; margin-bottom: 0 !important; }
+  .ys-flow .flow__list-item:nth-child(odd) {
+    transform: translateX(calc(-1 * var(--ys-card-shift))) !important;
+  }
+  .ys-flow .flow__list-item:nth-child(even) {
+    transform: translateX(var(--ys-card-shift)) !important;
+  }
+  .ys-flow .flow__list-item:nth-child(n) .flow__card {
+    width: 100% !important;
+    height: auto !important;
+    min-height: min(36rem, calc(100svh - 7rem)) !important;
+    border-radius: 2rem !important;
+    transform: none !important;
+    box-shadow: 0 -.2rem 1rem rgba(8, 47, 98, .06);
+  }
+  .ys-flow .flow__card-inner {
+    display: grid !important;
+    grid-template-rows: auto minmax(8rem, 1fr) auto !important;
+    align-content: stretch !important;
+    gap: 1rem !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 1.5rem 1.5rem 1.75rem !important;
+  }
+  .ys-flow .flow__card-header {
+    justify-content: flex-start !important;
+    min-height: 1.4rem !important;
+  }
+  .ys-flow .flow__card-header-title {
+    font-size: 1.15rem !important;
+  }
+  .ys-flow .flow__card-img-wrap {
+    justify-self: center !important;
+    align-self: center !important;
+    flex-basis: auto !important;
+    width: 7rem !important;
+    height: 7rem !important;
+    margin: 0 !important;
+  }
+  .ys-flow .flow__card-img {
+    width: 7rem !important;
+    height: 7rem !important;
+  }
+  .ys-flow .flow__card-content {
+    align-self: start !important;
+    gap: .65rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .ys-flow .flow__card-content-title {
+    font-size: 1.8rem !important;
+    line-height: 1 !important;
+  }
+  .ys-flow .flow__card-content-paragraph {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+  .ys-flow__closing {
+    width: calc(100% - 2 * var(--ys-mobile-gutter)) !important;
+    margin: 1.85rem var(--ys-mobile-gutter) 3.8rem !important;
+    padding: 1.5rem !important;
+    border-radius: 1.7rem !important;
+  }
+  .ys-flow__closing h3 {
+    font-size: clamp(1.65rem, 7vw, 2rem) !important;
+    line-height: 1.05 !important;
+  }
+  .ys-flow__closing p {
+    font-size: 1.03rem !important;
+    line-height: 1.5 !important;
+  }
+  .ys-flow__logo-easter-egg.hero__logo-easter-egg {
+    right: var(--ys-mobile-gutter) !important;
+    bottom: .75rem !important;
+  }
+  .ys-flow__logo-easter-egg .pop-up__overlay {
+    display: block !important;
+    right: 0 !important;
+    bottom: calc(100% + .5rem) !important;
+    left: auto !important;
+    max-width: calc(100vw - 2 * var(--ys-mobile-gutter)) !important;
+    filter: drop-shadow(0 .75rem 1.1rem rgba(8, 47, 98, .18));
+  }
+
+  /* Page 3 — two-line heading, distinct reading blocks, calmer pattern. */
+  .ys-story {
+    min-height: 0 !important;
+    padding: 4.75rem var(--ys-mobile-gutter) 4rem !important;
+    border-radius: 2.25rem !important;
+    scroll-margin-top: 5.5rem;
+  }
+  .ys-story__bg.flow__bg { opacity: .22 !important; }
+  .ys-story__title {
+    max-width: 100% !important;
+    font-size: clamp(2.65rem, 11.8vw, 3.4rem) !important;
+    line-height: .98 !important;
+  }
+  .ys-story__title span { display: block !important; }
+  .ys-story__lead {
+    max-width: 38ch !important;
+    margin-top: 1.35rem !important;
+    font-size: 1.08rem !important;
+    line-height: 1.5 !important;
+  }
+  .ys-story__signals {
+    width: 100% !important;
+    margin-top: 2rem !important;
+    padding: 1.35rem 1.2rem 1.5rem !important;
+    border-radius: 1.5rem !important;
+  }
+  .ys-story h3 {
+    font-size: 1.24rem !important;
+    line-height: 1.2 !important;
+  }
+  .ys-story__signals ul { gap: .7rem !important; }
+  .ys-story__signals li,
+  .ys-story__notes p {
+    font-size: 1.01rem !important;
+    line-height: 1.48 !important;
+  }
+  .ys-story__notes {
+    gap: 1.65rem !important;
+    margin-top: 2.2rem !important;
+  }
+  .ys-story__notes article { padding-top: 1.25rem !important; }
+
+  /* Page 4 — let the portrait and invitation share one deliberate scene. */
+  .ys-section-bridge {
+    z-index: 1 !important;
+    height: 1.5rem !important;
+    margin: 0 !important;
+    background: #fffdf8 !important;
+  }
+  .ys-section-bridge::before {
+    content: '';
+    position: absolute;
+    inset: -2.25rem 0;
+    background: inherit;
+    pointer-events: none;
+  }
+  .ys-site-footer__stage {
+    padding: 3.5rem var(--ys-mobile-gutter) 3rem !important;
+    border-radius: 2.25rem !important;
+    scroll-margin-top: 5.5rem;
+    background: #f7f3e9 !important;
+  }
+  .ys-site-footer__inner {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 2.2rem !important;
+  }
+  .ys-site-footer__title {
+    max-width: 100% !important;
+    font-size: clamp(2.6rem, 10.6vw, 3.25rem) !important;
+    line-height: .96 !important;
+  }
+  .ys-site-footer__lead {
+    max-width: 38ch !important;
+    margin: 1.3rem 0 1.45rem !important;
+    font-size: 1.08rem !important;
+    line-height: 1.5 !important;
+  }
+  .ys-site-footer__contact-button { --button-alt-height: 3.4rem; }
+  .ys-site-footer__contact-button > .button-alt__text-wrap,
+  .ys-site-footer__contact-button > .button-alt__icon-wrap {
+    box-sizing: border-box;
+    height: var(--button-alt-height) !important;
+    min-height: var(--button-alt-height) !important;
+    max-height: var(--button-alt-height) !important;
+    padding-block: 0 !important;
+    align-self: center;
+  }
+  .ys-site-footer__visual {
+    justify-self: center !important;
+    width: min(74vw, 16rem) !important;
+    max-height: none !important;
+    aspect-ratio: 3 / 4 !important;
+    border-radius: 6rem 6rem 1.4rem 1.4rem / 3rem 3rem 1.4rem 1.4rem !important;
+    transform: rotate(1deg) !important;
+  }
+  .ys-site-footer__visual img { object-position: 50% 24% !important; }
+  .ys-site-footer__bg .hero__bg { opacity: .44 !important; }
+
+  /* Finale — a genuinely revealed underlay, compact enough for one screen. */
+  .ys-site-footer {
+    position: sticky !important;
+    bottom: 0 !important;
+    z-index: 0 !important;
+    display: flex !important;
+    align-items: stretch !important;
+    justify-content: flex-end !important;
+    flex-direction: column !important;
+    min-height: min(82svh, 43rem) !important;
+    margin: -2.25rem 0 0 !important;
+    padding: 2rem 0 0 !important;
+    background: #bfd4c2 !important;
+  }
+  .ys-site-footer__pattern {
+    display: block !important;
+    position: absolute !important;
+    z-index: 0 !important;
+    inset: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+  .ys-site-footer__pattern .hero__bg {
+    position: absolute !important;
+    inset: -22% -35% !important;
+    width: 170% !important;
+    height: 145% !important;
+    color: #dfeade !important;
+    opacity: .34 !important;
+    transform: rotate(-7deg) !important;
+    clip-path: none !important;
+    animation: ys-footer-drift 22s ease-in-out infinite alternate !important;
+  }
+  .ys-site-footer__pattern .hero__bg path:nth-child(2) {
+    fill: #d7b889 !important;
+    stroke: #d7b889 !important;
+  }
+  .ys-site-footer__info {
+    width: 100% !important;
+    padding: 0 var(--ys-mobile-gutter) calc(1rem + env(safe-area-inset-bottom)) !important;
+  }
+  .ys-site-footer__bottom {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1.75rem 1.25rem !important;
+    padding: 0 !important;
+    translate: 0 var(--ys-mobile-reveal-y, 0px) !important;
+  }
+  .ys-site-footer__brand-column,
+  .ys-site-footer__contact-column { grid-column: 1 / -1 !important; }
+  .ys-site-footer__bottom > .ys-site-footer__column:not(.ys-site-footer__contact-column) {
+    grid-column: auto !important;
+  }
+  .ys-site-footer__brand-column .ys-brand { width: min(100%, 12rem) !important; }
+  .ys-site-footer__brand-column > p { margin-top: .65rem !important; }
+  .ys-site-footer__column h3 { margin-bottom: .65rem !important; }
+  .ys-site-footer__column ul { gap: .48rem !important; }
+  .ys-site-footer__address { gap: .08rem !important; }
+  .ys-site-footer__base {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: .9rem !important;
+    align-items: end !important;
+    margin-top: 1.55rem !important;
+    padding: 0 !important;
+    translate: 0 var(--ys-mobile-reveal-y, 0px) !important;
+  }
+  .ys-site-footer__base-meta {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+  }
+  .ys-site-footer__iso-pop-up {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+  .ys-site-footer__base-actions {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+  .ys-site-footer__social,
+  .ys-site-footer__back-top span { width: 2.75rem !important; height: 2.75rem !important; }
+}
+
+@media screen and (max-width: 359px) {
+  .hero__title { font-size: 3.05rem !important; }
+  .ys-flow .flow__title { font-size: 2.7rem !important; }
+  .ys-story__title { font-size: 2.55rem !important; }
+  .ys-site-footer__title { font-size: 2.45rem !important; }
+  .ys-flow .flow__list-item,
+  .ys-flow .flow__list-item:first-child,
+  .ys-flow .flow__list-item:last-child { width: 100% !important; }
+  .menu__login .button-alt__text { font-size: .9rem !important; }
+}
+
+@media screen and (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .ys-story__bg .flow__bg-svg,
+  .ys-site-footer__bg .hero__bg,
+  .ys-site-footer__pattern .hero__bg { animation: none !important; }
+}
+
+@media screen and (max-width: 767px) {
+  .ys-flow.is--inner-clip { clip-path: none !important; }
+  .ys-story { border-radius: 2.25rem !important; }
+}

@@ -1,0 +1,42 @@
+/* Shared section-ending contact logos; independent of the card gestures. */
+.ys-flow,
+.ys-story {
+  position: relative;
+  --ys-contact-inset: 2rem;
+  --ys-contact-size: 4.35rem;
+  padding-bottom: calc(var(--ys-contact-size) + 2 * var(--ys-contact-inset)) !important;
+}
+.ys-flow .ys-flow__closing { margin-bottom: 0 !important; }
+.ys-section-contact.hero__logo-easter-egg {
+  position: absolute !important;
+  display: flex !important;
+  top: auto !important;
+  left: auto !important;
+  right: var(--ys-contact-inset) !important;
+  bottom: var(--ys-contact-inset) !important;
+  width: var(--ys-contact-size) !important;
+  height: var(--ys-contact-size) !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 6;
+  pointer-events: none;
+}
+.ys-section-contact .pop-up { pointer-events: auto; }
+.ys-section-contact .pop-up__button,
+.ys-section-contact .pop-up__button-inner {
+  width: var(--ys-contact-size) !important;
+  height: var(--ys-contact-size) !important;
+}
+.ys-section-contact .pop-up__overlay {
+  display: block !important;
+  top: auto !important;
+  right: 0 !important;
+  bottom: calc(100% + .5rem) !important;
+  left: auto !important;
+  max-width: calc(100vw - 2 * var(--ys-contact-inset)) !important;
+}
+@media (max-width: 767px) {
+  .ys-flow,
+  .ys-story { --ys-contact-inset: 1.5rem; }
+}
