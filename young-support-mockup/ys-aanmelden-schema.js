@@ -80,9 +80,9 @@
       field('opmerkingen', 'Overige belangrijke gegevens/opmerkingen', 'textarea'),
       upload('overigeDocumenten', 'Overige documenten', 'Upload hier eventuele andere relevante documenten (max 5 bestanden)'),
       field('akkoordVoorwaarden', 'Ja, ik ga akkoord met de algemene voorwaarden', 'consent', true),
-      note('Ik geef Young/Support toestemming om mijn gegevens op te slaan en te verwerken.'),
-      note('De aanmelder stuurt deze gegevens aan Young/Support. De aanmelder besprak dit met de betrokkene(n) en kreeg toestemming om deze informatie te delen.'),
-      note('Young/Support kan nog meer informatie en documenten opvragen via de aanmelder indien nodig.'),
+      note('Ik geef YoungSupport toestemming om mijn gegevens op te slaan en te verwerken.'),
+      note('De aanmelder stuurt deze gegevens aan YoungSupport. De aanmelder besprak dit met de betrokkene(n) en kreeg toestemming om deze informatie te delen.'),
+      note('YoungSupport kan nog meer informatie en documenten opvragen via de aanmelder indien nodig.'),
       note("Tip: Gebruik de pijl 'Vorige' onderaan om het formulier nog eens te controleren voordat je verzendt."),
     ] },
   ];

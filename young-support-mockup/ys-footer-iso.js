@@ -45,7 +45,7 @@
   }
   const viewer = document.createElement('dialog');
   viewer.className = 'ys-certificate-viewer';
-  viewer.setAttribute('aria-label', 'ISO 9001-certificaat Young Support');
+  viewer.setAttribute('aria-label', 'ISO 9001-certificaat YoungSupport');
   viewer.innerHTML = `
     <div class="ys-certificate-viewer__inner">
       <div class="ys-certificate-viewer__header">
@@ -55,7 +55,7 @@
           <button type="button" aria-label="Sluit certificaat">×</button>
         </div>
       </div>
-      <iframe class="ys-certificate-viewer__frame" title="ISO 9001-certificaat van Young Support" data-src="${certificateUrl}#toolbar=1&navpanes=0"></iframe>
+      <iframe class="ys-certificate-viewer__frame" title="ISO 9001-certificaat van YoungSupport" data-src="${certificateUrl}#toolbar=1&navpanes=0"></iframe>
     </div>`;
   document.body.appendChild(viewer);
   const certificateLink = popup.querySelector('.ys-site-footer__iso-arrow');

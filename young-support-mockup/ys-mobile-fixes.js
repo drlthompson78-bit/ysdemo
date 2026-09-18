@@ -44,7 +44,7 @@
     const oldButton = document.querySelector('.ys-flow__logo-easter-egg .pop-up__button');
     if (oldButton) {
       const button = oldButton.cloneNode(true);
-      button.setAttribute('aria-label', 'Open Young Support contactkaart');
+      button.setAttribute('aria-label', 'Open YoungSupport contactkaart');
       oldButton.replaceWith(button);
     }
   }

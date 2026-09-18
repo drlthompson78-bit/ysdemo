@@ -40,7 +40,7 @@
     return `<li class="menu__nav-list-item"><a data-button href="${href}" class="button w-inline-block"><span class="button__bg"></span><span class="button__inner"><span data-button-text class="button__text" aria-label="${label}">${label}</span></span></a></li>`;
   }
 
-  document.title = 'Young Support - Website mockup';
+  document.title = 'YoungSupport - Website mockup';
   document.documentElement.lang = 'nl';
   const favicon = document.querySelector('link[rel="shortcut icon"]');
   if (favicon) {
@@ -61,20 +61,20 @@
       if (logo.closest('.menu')) document.querySelector('[data-menu-close]')?.click();
       window.setTimeout(() => window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth' }), 180);
     }, true);
-    logo.setAttribute('aria-label', 'Young Support');
+    logo.setAttribute('aria-label', 'YoungSupport');
   });
 
   const headerInner = document.querySelector('.header__inner');
   if (headerInner && !headerInner.querySelector('.ys-header-socials')) {
     headerInner.insertAdjacentHTML('beforeend', `
       <div class="ys-header-socials" aria-label="Social media">
-        <a href="#" class="button-social ys-header-social w-inline-block" aria-label="Young Support op LinkedIn">
+        <a href="#" class="button-social ys-header-social w-inline-block" aria-label="YoungSupport op LinkedIn">
           <span class="button-social__inner">
             <span class="button-social__bg"></span>
             <span class="button-social__icon-outer">${linkedinIcon}</span>
           </span>
         </a>
-        <a href="#" class="button-social ys-header-social w-inline-block" aria-label="Young Support op Instagram">
+        <a href="#" class="button-social ys-header-social w-inline-block" aria-label="YoungSupport op Instagram">
           <span class="button-social__inner">
             <span class="button-social__bg"></span>
             <span class="button-social__icon-outer">${instagramIcon}</span>
@@ -103,8 +103,8 @@
         <div id="ys-mega-menu" class="ys-mega-menu" aria-label="Over ons menu" aria-hidden="true" inert>
           <div class="ys-mega-menu__grid">
             <div class="ys-mega-menu__column">
-              <span class="ys-mega-menu__tag">Ontdek Young Support</span>
-              <nav aria-label="Ontdek Young Support" class="ys-mega-menu__links">
+              <span class="ys-mega-menu__tag">Ontdek YoungSupport</span>
+              <nav aria-label="Ontdek YoungSupport" class="ys-mega-menu__links">
                 <a href="#over-ons"><span class="ys-mega-menu__link-text">Voor wie we er zijn</span></a>
                 <a href="#how-it-works"><span class="ys-mega-menu__link-text">Onze aanpak</span></a>
               </nav>
@@ -272,10 +272,10 @@
   const mobileMenuSub = document.querySelector('.menu__sub');
   if (mobileMenuSub) {
     mobileMenuSub.innerHTML = `
-      <p class="ys-menu__social-label">Volg Young Support</p>
+      <p class="ys-menu__social-label">Volg YoungSupport</p>
       <div class="ys-menu__socials" aria-label="Social media">
-        <a href="#" class="button-social ys-menu__social w-inline-block" aria-label="Young Support op LinkedIn"><span class="button-social__inner"><span class="button-social__bg"></span><span class="button-social__icon-outer">${linkedinIcon}</span></span></a>
-        <a href="#" class="button-social ys-menu__social w-inline-block" aria-label="Young Support op Instagram"><span class="button-social__inner"><span class="button-social__bg"></span><span class="button-social__icon-outer">${instagramIcon}</span></span></a>
+        <a href="#" class="button-social ys-menu__social w-inline-block" aria-label="YoungSupport op LinkedIn"><span class="button-social__inner"><span class="button-social__bg"></span><span class="button-social__icon-outer">${linkedinIcon}</span></span></a>
+        <a href="#" class="button-social ys-menu__social w-inline-block" aria-label="YoungSupport op Instagram"><span class="button-social__inner"><span class="button-social__bg"></span><span class="button-social__icon-outer">${instagramIcon}</span></span></a>
       </div>`;
     mobileMenuSub.querySelectorAll('a').forEach((link) => link.addEventListener('click', (event) => event.preventDefault()));
   }
@@ -302,7 +302,7 @@
 
   const paragraph = document.querySelector('[data-hero-paragraph]');
   if (paragraph) {
-    paragraph.textContent = 'Young Support biedt persoonlijke begeleiding aan jongeren en jongvolwassenen die vastlopen in het dagelijks leven. Samen werken we aan structuur, zelfstandigheid en een toekomst die weer perspectief geeft.';
+    paragraph.textContent = 'YoungSupport biedt persoonlijke begeleiding aan jongeren en jongvolwassenen die vastlopen in het dagelijks leven. Samen werken we aan structuur, zelfstandigheid en een toekomst die weer perspectief geeft.';
   }
 
   const heroButton = document.querySelector('.hero__content > [data-button-alt]');
@@ -333,7 +333,7 @@
   if (heroImage) {
     heroImage.removeAttribute('srcset');
     heroImage.removeAttribute('sizes');
-    heroImage.alt = 'Jongere in gesprek met een begeleider van Young Support';
+    heroImage.alt = 'Jongere in gesprek met een begeleider van YoungSupport';
 
     const heroImageQuery = window.matchMedia('(max-width: 767px)');
     const updateHeroImage = () => {
@@ -387,7 +387,7 @@
       heading.insertAdjacentHTML('afterend', `
         <div class="ys-flow__intro">
           <p class="ys-flow__quote u-handwritten-regular">Kleine stappen maken samen het grote verschil.</p>
-          <p>Bij Young Support kijken we niet alleen naar waar een jongere of jongvolwassene vastloopt, maar vooral naar wat nodig is om weer verder te kunnen. We sluiten aan bij de leefwereld, mogelijkheden en het tempo van de persoon.</p>
+          <p>Bij YoungSupport kijken we niet alleen naar waar een jongere of jongvolwassene vastloopt, maar vooral naar wat nodig is om weer verder te kunnen. We sluiten aan bij de leefwereld, mogelijkheden en het tempo van de persoon.</p>
           <p>Onze begeleiding is persoonlijk, praktisch en doelgericht. We werken stap voor stap aan meer grip, vertrouwen, zelfstandigheid en perspectief.</p>
         </div>`);
     }
@@ -401,7 +401,7 @@
     const flowLogo = originalFlow.querySelector('.flow__cta-logo');
     if (flowLogo) {
       flowLogo.src = './young-support-mark-vector.svg?v=20260914-smooth2';
-      flowLogo.alt = 'Young Support';
+      flowLogo.alt = 'YoungSupport';
     }
 
     const approachCards = [
@@ -469,7 +469,7 @@
       const flowEasterEgg = heroEasterEgg.cloneNode(true);
       flowEasterEgg.classList.add('ys-flow__logo-easter-egg', 'ys-section-contact');
       const flowEasterEggButton = flowEasterEgg.querySelector('.pop-up__button');
-      if (flowEasterEggButton) flowEasterEggButton.setAttribute('aria-label', 'Open Young Support contactkaart');
+      if (flowEasterEggButton) flowEasterEggButton.setAttribute('aria-label', 'Open YoungSupport contactkaart');
       originalFlow.appendChild(flowEasterEgg);
     }
   }
@@ -503,7 +503,7 @@
             <div class="ys-story__notes">
               <article>
                 <h3>Gedrag vertelt vaak dat er iets nodig is.</h3>
-                <p>Achter terugtrekken, afhaken of afspraken niet nakomen zit vaak meer dan onwil. Young Support kijkt naar wat er speelt, wat iemand nodig heeft en waar ruimte zit om weer vooruit te komen.</p>
+                <p>Achter terugtrekken, afhaken of afspraken niet nakomen zit vaak meer dan onwil. YoungSupport kijkt naar wat er speelt, wat iemand nodig heeft en waar ruimte zit om weer vooruit te komen.</p>
               </article>
               <article>
                 <h3>We sluiten aan.</h3>
@@ -519,7 +519,7 @@
     if (story && contactLogo) {
       const storyContact = contactLogo.cloneNode(true);
       storyContact.classList.add('ys-section-contact');
-      storyContact.querySelector('.pop-up__button')?.setAttribute('aria-label', 'Open Young Support contactkaart');
+      storyContact.querySelector('.pop-up__button')?.setAttribute('aria-label', 'Open YoungSupport contactkaart');
       story.appendChild(storyContact);
     }
     const flowBackground = originalFlow && originalFlow.querySelector('.flow__bg');
@@ -551,7 +551,7 @@
               <span>naar wat wél</span>
               <span class="ys-accented-title">mogelijk is</span>
             </h2>
-            <p class="ys-site-footer__lead">Wil je weten of Young Support passend is voor een jongere of jongvolwassene? Neem gerust contact met ons op. We denken mee over de situatie, de ondersteuningsvraag en een passende volgende stap.</p>
+            <p class="ys-site-footer__lead">Wil je weten of YoungSupport passend is voor een jongere of jongvolwassene? Neem gerust contact met ons op. We denken mee over de situatie, de ondersteuningsvraag en een passende volgende stap.</p>
             <a data-button-alt data-wf--button-alt--variant="base" class="ys-site-footer__contact-button button-alt w-inline-block" href="mailto:info@youngsupport.nl">
               <span class="button-alt__text-wrap"><span class="button-alt__bg"></span><span class="button-alt__text-outer"><span data-button-alt-text class="button-alt__text" aria-label="Neem contact op">Neem contact op</span></span></span>
               <span class="button-alt__icon-wrap"><span class="button-alt__bg"></span><span class="button-alt__icon-outer">${arrow}</span></span>
@@ -592,7 +592,7 @@
           <div class="ys-site-footer__column ys-site-footer__contact-column">
             <h3>Contact</h3>
             <address class="ys-site-footer__address">
-              <strong>Young Support B.V.</strong>
+              <strong>YoungSupport B.V.</strong>
               <span>Graze Weitje 22</span>
               <span>3077 BM Rotterdam</span>
               <a href="tel:+31681038635">+31 6 81 03 86 35</a>
@@ -604,12 +604,12 @@
           <div class="ys-site-footer__base" data-footer-parallax-bottom>
             <img class="ys-site-footer__certification" src="./iso-9001-label.png" alt="ISO 9001:2015 gecertificeerd">
             <div class="ys-site-footer__base-meta">
-              <span>© 2026 Young Support</span>
+              <span>© 2026 YoungSupport</span>
             </div>
             <div class="ys-site-footer__base-actions">
               <div class="ys-site-footer__socials" aria-label="Social media">
-                <a class="ys-site-footer__social" href="#" aria-label="Young Support op LinkedIn">${linkedinIcon}</a>
-                <a class="ys-site-footer__social" href="#" aria-label="Young Support op Instagram">${instagramIcon}</a>
+                <a class="ys-site-footer__social" href="#" aria-label="YoungSupport op LinkedIn">${linkedinIcon}</a>
+                <a class="ys-site-footer__social" href="#" aria-label="YoungSupport op Instagram">${instagramIcon}</a>
               </div>
               <button class="ys-site-footer__back-top" type="button" aria-label="Terug naar boven">Terug naar boven <span aria-hidden="true">↑</span></button>
             </div>

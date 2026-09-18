@@ -694,7 +694,7 @@ function runPageOnceAnimation(next, options = {}) {
   });
 
   // The saved page already contains the post-animation hero state. Keep the
-  // static Young Support cover in place until this original Aardvark timeline
+  // static YoungSupport cover in place until this original Aardvark timeline
   // has established its real first frame, then hand over without a hero flash.
   if (!options.approvedIntro) {
     requestAnimationFrame(() => {
@@ -1393,7 +1393,7 @@ function runYoungSupportOnceAnimation(next) {
       },
     });
   } catch (error) {
-    console.error("Young Support intro kon niet starten", error);
+    console.error("YoungSupport intro kon niet starten", error);
     pageTimeline.progress(1);
     document.body.classList.add("ys-transition-ready");
     document.body.classList.remove("ys-approved-intro-active");
