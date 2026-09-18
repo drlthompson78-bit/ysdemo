@@ -2181,130 +2181,18 @@ function runPageEnterAnimation(next) {
 // BARBA HOOKS + INIT
 // -----------------------------------------
 
-barba.hooks.beforeEnter(data => {
-  // Position new container on top
-  gsap.set(data.next.container, {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-  });
-
-  if (lenis && typeof lenis.stop === "function") {
-    lenis.stop();
-  }
-
-  initBeforeEnterFunctions(data.next.container);
-  applyThemeFrom(data.next.container);
+// Native document navigation owns browser history. No template-swapping router.
+queueMicrotask(async () => {
+  const page = document.querySelector('[data-barba="container"]') || document;
+  initBeforeEnterFunctions(page);
+  applyThemeFrom(page);
+  initOnceFunctions();
+  await runYoungSupportOnceAnimation(page);
+  initAfterEnterFunctions(page);
+  if (lenis) { lenis.resize(); lenis.start(); }
+  if (hasScrollTrigger) ScrollTrigger.refresh();
 });
 
-barba.hooks.afterLeave(data => {
-  destroyBoxSequence();
-  
-  ScrollTrigger.getAll().forEach((trigger) => {
-    const triggerEl = trigger.trigger;
-
-    if (triggerEl && data.current.container.contains(triggerEl)) {
-      trigger.kill();
-    }
-  });
-});
-
-/*
-barba.hooks.afterLeave(() => {
-  destroyBoxSequence();
-  //destroyHeroSequence();
-
-  //if (hasScrollTrigger) {
-    //ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-  //}
-  
-  ScrollTrigger.getAll().forEach((trigger) => {
-    const triggerEl = trigger.trigger;
-
-    if (triggerEl && data.current.container.contains(triggerEl)) {
-      trigger.kill();
-    }
-  });
-});
-*/
-
-barba.hooks.enter(data => {
-  initBarbaNavUpdate(data);
-})
-
-barba.hooks.afterEnter(data => {
-  // Run page functions
-  initAfterEnterFunctions(data.next.container);
-
-  // Settle
-  if (hasLenis) {
-    lenis.resize();
-    lenis.start();
-  }
-
-  if (hasScrollTrigger) {
-    ScrollTrigger.refresh();
-  }
-});
-
-barba.use(barbaPrefetch, {
-  timeout: 2500,
-  limit: 0
-});
-
-barba.init({
-  // YS renders its content on a full document load. Never swap raw template HTML.
-  prevent: () => true,
-  debug: false, // Set to 'false' in production
-  timeout: 7000,
-  preventRunning: true,
-  transitions: [
-  {
-    name: "self",
-    sync: true,
-
-    // First load
-    async once(data) {
-      initOnceFunctions();
-
-      return runYoungSupportOnceAnimation(data.next.container);
-    },
-
-    // Current page leaves
-    async leave(data) {
-      return runPageLeaveAnimation(data.current.container, data.next.container);
-    },
-
-    // New page enters
-    async enter(data) {
-      return runPageEnterAnimation(data.next.container);
-    }
-  },
-  {
-    name: "default",
-    sync: true,
-
-    // First load
-    async once(data) {
-      initOnceFunctions();
-
-      return runYoungSupportOnceAnimation(data.next.container);
-    },
-
-    // Current page leaves
-    async leave(data) {
-      return runPageLeaveAnimation(data.current.container, data.next.container);
-    },
-
-    // New page enters
-    async enter(data) {
-      return runPageEnterAnimation(data.next.container);
-    }
-  }],
-});
-
-// -----------------------------------------
 // GENERIC + HELPERS
 // -----------------------------------------
 
@@ -4131,6 +4019,7 @@ function initFormValidation() {
     const fields = form.querySelectorAll('[data-validate] input, [data-validate] textarea');
     const submitButtonDiv = form.querySelector(
       '[data-submit]'); // The div wrapping the submit button
+    if (!submitButtonDiv) return; // Removed reference forms have no submit control.
     const submitInput = submitButtonDiv.querySelector(
       'input[type="submit"]'); // The actual submit button
 

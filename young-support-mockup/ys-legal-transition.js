@@ -49,6 +49,16 @@
     if (url.origin !== location.origin || !url.pathname.startsWith(base)) return;
     if (busy) return;
     const navigate = () => {
+      if (url.pathname === location.pathname && url.search === location.search && url.hash) {
+        const target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+        if (!target) { clear(); return; }
+        if (location.hash !== url.hash) history.pushState(null, '', url.href);
+        const y = url.hash === '#top' ? 0 : target.getBoundingClientRect().top + scrollY;
+        if (typeof lenis !== 'undefined' && lenis) lenis.scrollTo(y, {immediate:true, force:true});
+        else window.scrollTo({top:y,behavior:'instant'});
+        reveal();
+        return;
+      }
       try { sessionStorage.setItem('ys-legal-navigation', JSON.stringify({path:url.pathname,time:Date.now()})); } catch (_) {}
       location.assign(url.href);
     };
@@ -74,8 +84,9 @@
     const url = new URL(link.href, location.href);
     if (url.origin !== location.origin || !url.pathname.startsWith(base)) return;
     const registration = url.pathname === base + 'aanmelden/';
-    if (!registration && !legalPath(url.pathname) && !legalPath(location.pathname)) return;
-    if (url.pathname === location.pathname && url.search === location.search) return;
+    const footerNav = !!link.closest('.ys-site-footer nav[aria-label="Navigatie in de footer"]');
+    if (!footerNav && !registration && !legalPath(url.pathname) && !legalPath(location.pathname)) return;
+    if (!footerNav && url.pathname === location.pathname && url.search === location.search) return;
     event.preventDefault();
     event.stopImmediatePropagation();
     if (busy) return;
