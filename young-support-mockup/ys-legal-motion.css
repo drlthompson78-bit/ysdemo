@@ -2,19 +2,11 @@
 .ys-legal-page .legal-hero__pattern{animation:ys-legal-drift 18s ease-in-out infinite alternate;transform-origin:center;will-change:transform}
 @keyframes ys-legal-drift{from{transform:translate3d(-3%,-2%,0) rotate(-5deg) scale(1.08)}to{transform:translate3d(3%,3%,0) rotate(7deg) scale(1.16)}}
 .ys-legal-page .ys-site-footer{--grid-margin:clamp(24px,4vw,64px);font-family:var(--legal-body);line-height:1.5}
-.ys-legal-page .ys-site-footer__bottom,.ys-legal-page .ys-site-footer__base{translate:none!important}
+
 .ys-legal-page .ys-site-footer__back-top{cursor:pointer}
 @media(max-height:500px) and (orientation:landscape){.legal-hero{padding-top:130px;padding-bottom:48px}.legal-hero h1{font-size:56px}.legal-copy{width:min(86%,880px)}}
 @media(prefers-reduced-motion:reduce){.ys-legal-page .legal-hero__pattern{animation:none;will-change:auto}}
 
-/* The content slides over the footer instead of moving the footer's text. */
-.ys-legal-page .ys-site-footer{
-  position:sticky!important;
-  bottom:var(--legal-footer-bottom,0px)!important;
-}
-@media(prefers-reduced-motion:reduce){
-  .ys-legal-page .ys-site-footer{position:relative!important;bottom:auto!important}
-}
 @media print{
   .ys-legal-page .ys-site-footer{display:none!important}
 }

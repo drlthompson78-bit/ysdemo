@@ -5,7 +5,7 @@
     if (!window.IntersectionObserver || !Element.prototype.animate) return;
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
     // Explicit text targets avoid the hero intro, cards, handwritten and photo effects.
-    const targets = [...document.querySelectorAll('#how-it-works h2, #how-it-works p, .ys3-intro-copy h2, .ys3-lead, #ys3-aansluiten h3, #ys3-aansluiten p, #contact h2, #contact .ys-site-footer__lead')].filter(el => !el.closest('[data-handwritten-text-inview], .ys-flow__quote, .ys-flow__swipe-hint, .ys-demo-card') && !el.querySelector('[data-handwritten-text-inview]'));
+    const targets = [...document.querySelectorAll('.ys-legal-page .legal-copy h2, .ys-legal-page .legal-copy h3, .ys-legal-page .legal-copy p, .ys-legal-page .legal-copy li, #how-it-works h2, #how-it-works p, .ys3-intro-copy h2, .ys3-lead, #ys3-aansluiten h3, #ys3-aansluiten p, #contact h2, #contact .ys-site-footer__lead')].filter(el => !el.closest('[data-handwritten-text-inview], .ys-flow__quote, .ys-flow__swipe-hint, .ys-demo-card') && !el.querySelector('[data-handwritten-text-inview]'));
     const animations = new Set();
     const seen = new WeakSet();
     const running = new WeakSet();
