@@ -1,0 +1,8 @@
+/* Align the hero copy with the roomier page gutters. */
+@media(min-width:1024px){
+ .hero .hero__content{padding-left:40px!important;box-sizing:border-box}
+}
+@media(max-width:1023px){
+ .hero .hero__container{padding-left:24px!important;padding-right:24px!important}
+ .hero .hero__content{padding-left:0!important;padding-right:0!important}
+}

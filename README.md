@@ -6,4 +6,4 @@ Serve this directory with any static web server and open `/young-support-mockup/
 
 Includes the current HTML, CSS, JavaScript, images, fonts, and PDFs. Registration remains a demo.
 
-Snapshot source revision: `2859e6417baa00d2091bfe9b59145e4fb89f5eb1`. Earlier development history is not included.
+Snapshot source revision: `0a4c02ee7a084d59c47ed77cf8b198e8c6e861ae`. Earlier development history is not included.
