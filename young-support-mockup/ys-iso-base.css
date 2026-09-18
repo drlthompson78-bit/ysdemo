@@ -235,3 +235,6 @@
 .choice{
   --pop-up-logo-color: var(--black);
 }
+
+/* Reset the browser button frame without removing keyboard focus feedback. */
+.ys-site-footer__iso-pop-up .pop-up__button{appearance:none;-webkit-appearance:none;border:0;box-shadow:none;background:transparent;padding:0;cursor:pointer}
