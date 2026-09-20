@@ -6,9 +6,23 @@
   const update = () => hint.classList.toggle('is-hidden', scrollY > 10);
   const startMotion = () => {
     if (reduced.matches || document.body.classList.contains('about-motion-ready')) return;
-    requestAnimationFrame(() => {
-      setTimeout(() => document.body.classList.add('about-motion-ready'), 450);
-    });
+    let started = false;
+    let observer;
+    let fallback;
+    const transitionFinished = () => !document.querySelector('.ys-legal-wipe') && !document.documentElement.classList.contains('ys-legal-arrival');
+    const begin = () => {
+      if (started) return;
+      started = true;
+      observer?.disconnect();
+      clearTimeout(fallback);
+      requestAnimationFrame(() => {
+        setTimeout(() => document.body.classList.add('about-motion-ready'), 650);
+      });
+    };
+    if (transitionFinished()) { begin(); return; }
+    observer = new MutationObserver(() => { if (transitionFinished()) begin(); });
+    observer.observe(document.documentElement, {attributes:true,attributeFilter:['class'],childList:true,subtree:true});
+    fallback = setTimeout(begin, 9000);
   };
 
   hint.addEventListener('click', event => {
