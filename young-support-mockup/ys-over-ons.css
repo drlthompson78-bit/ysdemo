@@ -22,10 +22,29 @@
   background:var(--ys-sage);
 }
 
-.ys-about-page .legal-hero{padding-top:clamp(175px,15vw,220px);padding-bottom:clamp(84px,9vw,125px)}
-.ys-about-page .legal-hero h1{max-width:1200px;font-size:clamp(46px,6.5vw,100px);line-height:.97}
-.ys-about-page .legal-hero>p:not(.about-eyebrow){max-width:790px;font-size:clamp(19px,1.55vw,24px);line-height:1.5}
-.ys-about-page .about-eyebrow{margin:0 auto 22px;color:var(--ys-sage-deep);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.ys-about-page .legal-hero{box-sizing:border-box;min-height:100svh;padding:clamp(168px,14vh,210px) clamp(24px,4vw,72px) clamp(150px,18vh,210px);text-align:left}
+.about-hero__layout{position:relative;width:min(100%,1380px);margin:0 auto;padding-top:clamp(46px,7vh,92px)}
+.ys-about-page .legal-hero h1{max-width:none;margin:0;font-size:clamp(52px,6.45vw,104px);line-height:.96;text-align:left}
+.about-title-line{display:block}
+.about-title-line--indented{padding-left:clamp(150px,18vw,310px)}
+.ys-about-page .about-eyebrow{position:absolute;top:clamp(55px,7.7vh,101px);left:0;width:clamp(120px,14vw,220px);margin:0;color:var(--ys-navy);font-size:clamp(14px,1.2vw,19px);font-weight:700;letter-spacing:0;text-transform:none}
+.ys-about-page .legal-hero .about-title-outline{position:relative;display:inline-block;isolation:isolate;margin-right:.12em;white-space:nowrap}
+.about-title-outline svg{position:absolute;z-index:-1;top:-23%;left:-6%;width:112%;height:150%;overflow:visible;color:var(--ys-navy);pointer-events:none}
+.about-title-outline path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100;animation:about-circle-draw 1.15s cubic-bezier(.62,.05,0,1) .65s forwards}
+.ys-about-page .about-hero__intro{max-width:780px;margin:clamp(38px,5vh,62px) 0 0 clamp(150px,24vw,390px);font-size:clamp(18px,1.45vw,23px);line-height:1.48;text-align:left}
+.about-scroll-hint{position:fixed;z-index:3;bottom:clamp(22px,4vh,46px);left:50%;display:block;width:clamp(76px,6vw,102px);color:var(--ys-navy);opacity:1;transform:translateX(-50%);transition:opacity .35s ease,visibility .35s ease}
+.about-scroll-hint.is-hidden{visibility:hidden;opacity:0}
+.about-scroll-hint svg{display:block;width:100%;height:auto;overflow:visible}
+.about-scroll-hint path{fill:none;stroke:currentColor;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round}
+.about-scroll-hint__line,.about-scroll-hint__arrow{stroke-dasharray:100;stroke-dashoffset:100}
+.about-scroll-hint__line{animation:about-scroll-draw 1.35s cubic-bezier(.62,.05,0,1) 1.55s forwards}
+.about-scroll-hint__arrow{animation:about-scroll-draw .42s ease-out 2.65s forwards,about-scroll-bob 1.8s ease-in-out 3.1s infinite}
+.about-scroll-hint text{fill:currentColor;font-family:YSAboutBody,Arial,sans-serif;font-size:17px;font-style:italic;letter-spacing:.02em;opacity:0;animation:about-scroll-text .45s ease 2.05s forwards}
+
+@keyframes about-circle-draw{to{stroke-dashoffset:0}}
+@keyframes about-scroll-draw{to{stroke-dashoffset:0}}
+@keyframes about-scroll-text{to{opacity:1}}
+@keyframes about-scroll-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
 .ys-about-page .about-copy{width:min(78%,1120px);padding-top:clamp(72px,8vw,110px);padding-bottom:clamp(110px,12vw,170px)}
 .ys-about-page .about-copy section{margin-top:0}
@@ -45,6 +64,13 @@
 .about-cta:is(:hover,:focus-visible){background:var(--ys-sage);transform:translateY(-3px)}
 
 @media(max-width:900px){
+  .ys-about-page .legal-hero{min-height:max(720px,100svh);padding:136px 24px 142px}
+  .about-hero__layout{padding-top:34px}
+  .ys-about-page .legal-hero h1{font-size:clamp(38px,10.2vw,66px);line-height:.98}
+  .about-title-line--indented{padding-left:clamp(54px,14vw,110px)}
+  .ys-about-page .about-eyebrow{position:static;width:auto;margin:0 0 28px;font-size:14px}
+  .ys-about-page .about-hero__intro{max-width:34em;margin:40px 0 0 clamp(28px,9vw,80px);font-size:18px}
+  .about-scroll-hint{bottom:24px;width:72px}
   .ys-about-page .about-copy{width:auto;margin-right:24px;margin-left:24px}
   .about-intro{grid-template-columns:1fr;gap:56px}
   .about-photo{width:min(78vw,500px);margin-right:auto;margin-left:auto}
@@ -52,10 +78,12 @@
 
 @media(max-width:767px){
   .ys-about-page .legal-header nav a:not(:last-child){display:none}
-  .ys-about-page .legal-hero{padding-top:145px;padding-bottom:70px}
-  .ys-about-page .legal-hero h1{font-size:clamp(37px,10.2vw,54px);line-height:1}
-  .ys-about-page .legal-hero>p:not(.about-eyebrow){font-size:19px}
-  .ys-about-page .about-eyebrow{margin-bottom:18px;font-size:13px}
+  .ys-about-page .legal-hero{padding-top:125px;padding-bottom:132px}
+  .ys-about-page .legal-hero h1{font-size:clamp(36px,10.7vw,52px);line-height:1}
+  .ys-about-page .about-eyebrow{margin-bottom:24px;font-size:13px}
+  .about-title-line--indented{padding-left:7vw}
+  .ys-about-page .about-hero__intro{margin:34px 0 0;font-size:18px;line-height:1.45}
+  .about-title-outline svg{top:-15%;left:-3%;width:106%;height:132%}
   .about-photo{width:min(82vw,430px)}
   .about-photo::before{inset:-9px;border-width:9px}
   .about-panel{padding:28px 24px;border-radius:28px}
@@ -63,8 +91,16 @@
 }
 
 @media(max-height:500px) and (orientation:landscape){
-  .ys-about-page .legal-hero{padding-top:125px;padding-bottom:50px}
-  .ys-about-page .legal-hero h1{font-size:52px}
+  .ys-about-page .legal-hero{min-height:640px;padding-top:112px;padding-bottom:120px}
+  .ys-about-page .legal-hero h1{font-size:clamp(42px,6vw,54px)}
+  .about-hero__layout{padding-top:20px}
+  .ys-about-page .about-eyebrow{top:24px}
+  .ys-about-page .about-hero__intro{margin-top:30px}
+  .about-scroll-hint{display:none}
 }
 
-@media(prefers-reduced-motion:reduce){.about-cta{transition:none}}
+@media(prefers-reduced-motion:reduce){
+  .about-cta{transition:none}
+  .about-title-outline path,.about-scroll-hint__line,.about-scroll-hint__arrow{stroke-dashoffset:0;animation:none}
+  .about-scroll-hint text{opacity:1;animation:none}
+}
