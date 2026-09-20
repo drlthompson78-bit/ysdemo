@@ -1,6 +1,6 @@
 (() => {
   const base = '/young-support-mockup/';
-  const legalPath = path => /^\/young-support-mockup\/(privacybeleid|algemene-voorwaarden|klachtenregeling)\/?$/.test(path);
+  const legalPath = path => /^\/young-support-mockup\/(privacybeleid|algemene-voorwaarden|klachtenregeling|over-ons)\/?(?:index\.html)?$/.test(path);
   const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   const pathData = 'M66.858-19C57.597 196.452 127.164 482.585 206.5 464.5c125.428-28.592 52.293-293.51 200.001-339 568.234-175-241.425 712.6 15.5 803.02C645 1007 629.398 499 810.5 499c113.398 0 106.54 189.465 164.235 429.52 48.005 199.72 89.415 213.09 105.265 173.78';
   let busy = false, overlay, timeline;

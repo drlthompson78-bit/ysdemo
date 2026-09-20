@@ -1,0 +1,70 @@
+@font-face{font-family:YSAboutBody;src:url('./fonts/dm-sans-regular.woff2') format('woff2');font-display:swap;font-weight:400}
+@font-face{font-family:YSAboutBody;src:url('./fonts/dm-sans-bold.woff2') format('woff2');font-display:swap;font-weight:700}
+@font-face{font-family:YSAboutHeading;src:url('./fonts/epilogue-black.woff2') format('woff2');font-display:swap;font-weight:900}
+
+.ys-about-page{
+  --legal-body:YSAboutBody,Arial,sans-serif;
+  --legal-heading:YSAboutHeading,Arial,sans-serif;
+  --ys-navy:#082f62;
+  --ys-sage:#bfd4c2;
+  --ys-sage-deep:#5e8d70;
+  --ys-cream:#f7f3e9;
+  --ys-white:#fffdf8;
+  --ys-gold:#d7b889;
+  --black:#082f62;
+  --white:#fffdf8;
+  --yellow:#bfd4c2;
+  --pale-yellow:#dfeade;
+  --orange:#d7b889;
+  --magenta:#5e8d70;
+  --ys-text-footer:.95rem;
+  --ys-text-meta:.78rem;
+  background:var(--ys-sage);
+}
+
+.ys-about-page .legal-hero{padding-top:clamp(175px,15vw,220px);padding-bottom:clamp(84px,9vw,125px)}
+.ys-about-page .legal-hero h1{max-width:1200px;font-size:clamp(46px,6.5vw,100px);line-height:.97}
+.ys-about-page .legal-hero>p:not(.about-eyebrow){max-width:790px;font-size:clamp(19px,1.55vw,24px);line-height:1.5}
+.ys-about-page .about-eyebrow{margin:0 auto 22px;color:var(--ys-sage-deep);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+
+.ys-about-page .about-copy{width:min(78%,1120px);padding-top:clamp(72px,8vw,110px);padding-bottom:clamp(110px,12vw,170px)}
+.ys-about-page .about-copy section{margin-top:0}
+.about-intro{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr);align-items:center;gap:clamp(48px,8vw,110px)}
+.about-photo{position:relative;width:100%;aspect-ratio:4/3;margin:18px 0;transform:rotate(-3deg)}
+.about-photo::before{content:"";position:absolute;inset:-14px;border:14px solid var(--ys-white);border-radius:48% 48% 24px 24px/26% 26% 24px 24px;box-shadow:0 24px 48px color-mix(in srgb,var(--ys-navy) 16%,transparent)}
+.about-photo img{position:relative;display:block;width:100%;height:100%;border-radius:48% 48% 12px 12px/26% 26% 12px 12px;object-fit:cover;object-position:48% center}
+.ys-about-page .about-copy h2{font-size:clamp(34px,4vw,58px);line-height:1.04}
+.about-panel{margin-top:clamp(84px,10vw,140px)!important;padding:clamp(38px,6vw,70px);border-radius:clamp(28px,4vw,52px);background:var(--ys-navy);color:var(--ys-white)}
+.about-panel h2{max-width:760px;color:var(--ys-sage)}
+.about-panel p{max-width:850px}
+.about-final{margin-top:clamp(84px,10vw,140px)!important;text-align:center}
+.about-final h2{max-width:850px;margin-right:auto;margin-left:auto}
+.about-final p{max-width:760px;margin-right:auto;margin-left:auto}
+.about-final blockquote{max-width:940px;margin:clamp(38px,6vw,70px) auto;padding:0;color:var(--ys-sage-deep);font-family:var(--legal-heading);font-size:clamp(30px,4.3vw,60px);font-weight:900;letter-spacing:-.025em;line-height:1.08}
+.about-cta{display:inline-flex;margin-top:18px;padding:15px 25px;border-radius:999px;background:var(--ys-gold);font-weight:700;text-decoration:none;transition:transform .25s ease,background-color .25s ease}
+.about-cta:is(:hover,:focus-visible){background:var(--ys-sage);transform:translateY(-3px)}
+
+@media(max-width:900px){
+  .ys-about-page .about-copy{width:auto;margin-right:24px;margin-left:24px}
+  .about-intro{grid-template-columns:1fr;gap:56px}
+  .about-photo{width:min(78vw,500px);margin-right:auto;margin-left:auto}
+}
+
+@media(max-width:767px){
+  .ys-about-page .legal-header nav a:not(:last-child){display:none}
+  .ys-about-page .legal-hero{padding-top:145px;padding-bottom:70px}
+  .ys-about-page .legal-hero h1{font-size:clamp(37px,10.2vw,54px);line-height:1}
+  .ys-about-page .legal-hero>p:not(.about-eyebrow){font-size:19px}
+  .ys-about-page .about-eyebrow{margin-bottom:18px;font-size:13px}
+  .about-photo{width:min(82vw,430px)}
+  .about-photo::before{inset:-9px;border-width:9px}
+  .about-panel{padding:28px 24px;border-radius:28px}
+  .about-final blockquote{font-size:clamp(29px,8.5vw,42px)}
+}
+
+@media(max-height:500px) and (orientation:landscape){
+  .ys-about-page .legal-hero{padding-top:125px;padding-bottom:50px}
+  .ys-about-page .legal-hero h1{font-size:52px}
+}
+
+@media(prefers-reduced-motion:reduce){.about-cta{transition:none}}

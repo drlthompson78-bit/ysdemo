@@ -91,7 +91,7 @@
     navigation.innerHTML = [
       dropdownButton('Over ons'),
       normalButton('Onze aanpak', '#how-it-works'),
-      normalButton('Onze visie', '#'),
+      normalButton('Onze visie', '#onze-visie'),
       actionButton('Aanmelden', './aanmelden/'),
     ].join('');
 
@@ -105,6 +105,7 @@
             <div class="ys-mega-menu__column">
               <span class="ys-mega-menu__tag">Ontdek YoungSupport</span>
               <nav aria-label="Ontdek YoungSupport" class="ys-mega-menu__links">
+                <a href="./over-ons/"><span class="ys-mega-menu__link-text">Over ons</span></a>
                 <a href="#over-ons"><span class="ys-mega-menu__link-text">Voor wie we er zijn</span></a>
                 <a href="#how-it-works"><span class="ys-mega-menu__link-text">Onze aanpak</span></a>
               </nav>
@@ -243,9 +244,10 @@
   const mobileNavigation = document.querySelector('.menu__nav-list');
   if (mobileNavigation) {
     mobileNavigation.innerHTML = [
-      mobileMenuButton('Over ons', '#over-ons'),
+      mobileMenuButton('Over ons', './over-ons/'),
+      mobileMenuButton('Voor wie', '#over-ons'),
       mobileMenuButton('Onze aanpak', '#how-it-works'),
-      mobileMenuButton('Onze visie', '#'),
+      mobileMenuButton('Onze visie', '#onze-visie'),
       mobileMenuButton('Aanmelden', './aanmelden/'),
     ].join('');
   }
@@ -307,7 +309,7 @@
 
   const heroButton = document.querySelector('.hero__content > [data-button-alt]');
   if (heroButton) {
-    heroButton.href = '#how-it-works';
+    heroButton.href = './over-ons/';
     heroButton.removeAttribute('target');
     const buttonText = heroButton.querySelector('[data-button-alt-text]');
     if (buttonText) {
@@ -455,7 +457,7 @@
     }
     if (flowContent && !originalFlow.querySelector('.ys-flow__closing')) {
       flowContent.insertAdjacentHTML('afterend', `
-        <div class="ys-flow__closing">
+        <div class="ys-flow__closing" id="onze-visie">
           <h3>Geen standaardtraject, maar begeleiding die aansluit.</h3>
           <p>Iedere jongere en jongvolwassene is anders. Daarom kijken we steeds opnieuw welke ondersteuning nodig is, waar ruimte ontstaat om los te laten en wat de volgende haalbare stap is.</p>
         </div>`);
@@ -576,7 +578,8 @@
             <ul>
               <li><a href="#top">Home</a></li>
               <li><a href="#how-it-works">Onze aanpak</a></li>
-              <li><a href="#over-ons">Over ons</a></li>
+              <li><a href="./over-ons/">Over ons</a></li>
+              <li><a href="#over-ons">Voor wie</a></li>
             </ul>
           </nav>
 

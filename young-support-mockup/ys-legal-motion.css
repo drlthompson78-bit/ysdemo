@@ -1,7 +1,7 @@
 .ys-legal-page main{position:relative;z-index:2;background:#f7f3e9;border-radius:0 0 clamp(40px,7vw,100px) clamp(40px,7vw,100px);overflow:hidden}
 .ys-legal-page .legal-hero__pattern{animation:ys-legal-drift 18s ease-in-out infinite alternate;transform-origin:center;will-change:transform}
 @keyframes ys-legal-drift{from{transform:translate3d(-3%,-2%,0) rotate(-5deg) scale(1.08)}to{transform:translate3d(3%,3%,0) rotate(7deg) scale(1.16)}}
-.ys-legal-page .ys-site-footer{--grid-margin:clamp(24px,4vw,64px);font-family:var(--legal-body);line-height:1.5}
+.ys-legal-page .ys-site-footer{--grid-margin:clamp(24px,4vw,64px);position:sticky!important;bottom:0!important;z-index:0!important;font-family:var(--legal-body);line-height:1.5}
 
 .ys-legal-page .ys-site-footer__back-top{cursor:pointer}
 @media(max-height:500px) and (orientation:landscape){.legal-hero{padding-top:130px;padding-bottom:48px}.legal-hero h1{font-size:56px}.legal-copy{width:min(86%,880px)}}
