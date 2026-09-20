@@ -1,10 +1,6 @@
-@font-face{font-family:YSAboutBody;src:url('./fonts/dm-sans-regular.woff2') format('woff2');font-display:swap;font-weight:400}
-@font-face{font-family:YSAboutBody;src:url('./fonts/dm-sans-bold.woff2') format('woff2');font-display:swap;font-weight:700}
-@font-face{font-family:YSAboutHeading;src:url('./fonts/epilogue-black.woff2') format('woff2');font-display:swap;font-weight:900}
-
 .ys-about-page{
-  --legal-body:YSAboutBody,Arial,sans-serif;
-  --legal-heading:YSAboutHeading,Arial,sans-serif;
+  --legal-body:"Avenir Next",Avenir,"Nunito Sans",Arial,sans-serif;
+  --legal-heading:"Arial Rounded MT Bold","Avenir Next",Arial,sans-serif;
   --ys-navy:#082f62;
   --ys-sage:#bfd4c2;
   --ys-sage-deep:#5e8d70;
@@ -24,14 +20,14 @@
 
 .ys-about-page .legal-hero{box-sizing:border-box;min-height:100svh;padding:clamp(168px,14vh,210px) clamp(24px,4vw,72px) clamp(150px,18vh,210px);text-align:left}
 .about-hero__layout{position:relative;width:min(100%,1380px);margin:0 auto;padding-top:clamp(46px,7vh,92px)}
-.ys-about-page .legal-hero h1{max-width:none;margin:0;font-size:clamp(52px,6.45vw,104px);line-height:.96;text-align:left}
+.ys-about-page .legal-hero h1{max-width:none;margin:0;font-size:clamp(52px,6.45vw,104px);font-weight:900;letter-spacing:-.055em;line-height:.96;text-align:left}
 .about-title-line{display:block}
 .about-title-line--indented{padding-left:clamp(150px,18vw,310px)}
 .ys-about-page .about-eyebrow{position:absolute;top:clamp(55px,7.7vh,101px);left:0;width:clamp(120px,14vw,220px);margin:0;color:var(--ys-navy);font-size:clamp(14px,1.2vw,19px);font-weight:700;letter-spacing:0;text-transform:none}
 .ys-about-page .legal-hero .about-title-outline{position:relative;display:inline-block;isolation:isolate;margin-right:.12em;white-space:nowrap}
 .about-title-outline svg{position:absolute;z-index:-1;top:-23%;left:-6%;width:112%;height:150%;overflow:visible;color:var(--ys-navy);pointer-events:none}
 .about-title-outline path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100;animation:about-circle-draw 1.15s cubic-bezier(.62,.05,0,1) .65s forwards}
-.ys-about-page .about-hero__intro{max-width:780px;margin:clamp(38px,5vh,62px) 0 0 clamp(150px,24vw,390px);font-size:clamp(18px,1.45vw,23px);line-height:1.48;text-align:left}
+.ys-about-page .about-hero__intro{max-width:780px;margin:clamp(38px,5vh,62px) 0 0 clamp(150px,24vw,390px);font-size:clamp(18px,1.45vw,23px);font-weight:500;line-height:1.48;text-align:left}
 .about-scroll-hint{position:fixed;z-index:3;bottom:clamp(22px,4vh,46px);left:50%;display:block;width:clamp(76px,6vw,102px);color:var(--ys-navy);opacity:1;transform:translateX(-50%);transition:opacity .35s ease,visibility .35s ease}
 .about-scroll-hint.is-hidden{visibility:hidden;opacity:0}
 .about-scroll-hint svg{display:block;width:100%;height:auto;overflow:visible}
@@ -39,7 +35,7 @@
 .about-scroll-hint__line,.about-scroll-hint__arrow{stroke-dasharray:100;stroke-dashoffset:100}
 .about-scroll-hint__line{animation:about-scroll-draw 1.35s cubic-bezier(.62,.05,0,1) 1.55s forwards}
 .about-scroll-hint__arrow{animation:about-scroll-draw .42s ease-out 2.65s forwards,about-scroll-bob 1.8s ease-in-out 3.1s infinite}
-.about-scroll-hint text{fill:currentColor;font-family:YSAboutBody,Arial,sans-serif;font-size:17px;font-style:italic;letter-spacing:.02em;opacity:0;animation:about-scroll-text .45s ease 2.05s forwards}
+.about-scroll-hint text{fill:currentColor;font-family:var(--legal-body);font-size:17px;font-style:italic;letter-spacing:.02em;opacity:0;animation:about-scroll-text .45s ease 2.05s forwards}
 
 @keyframes about-circle-draw{to{stroke-dashoffset:0}}
 @keyframes about-scroll-draw{to{stroke-dashoffset:0}}
