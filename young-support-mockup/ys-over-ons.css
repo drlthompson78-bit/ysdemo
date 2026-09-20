@@ -25,13 +25,13 @@
 .about-title-line--indented{padding-left:clamp(150px,18vw,310px)}
 .ys-about-page .about-eyebrow{position:absolute;top:clamp(55px,7.7vh,101px);left:0;width:clamp(120px,14vw,220px);margin:0;color:var(--ys-navy);font-size:clamp(14px,1.2vw,19px);font-weight:700;letter-spacing:0;text-transform:none}
 .ys-about-page .legal-hero .about-title-outline{position:relative;display:inline-block;isolation:isolate;margin-right:.12em;white-space:nowrap}
-.about-title-outline svg{position:absolute;z-index:-1;top:-23%;left:-6%;width:112%;height:150%;overflow:visible;color:var(--ys-navy);pointer-events:none}
-.about-title-outline path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100;animation:about-circle-draw 1.15s cubic-bezier(.62,.05,0,1) .65s forwards}
+.about-title-outline svg{position:absolute;z-index:-1;top:50%;left:50%;width:100%;height:100%;overflow:visible;color:var(--ys-navy);pointer-events:none;transform:translate(-50%,-50%)}
+.about-title-outline path{fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100;animation:about-circle-draw 1.15s cubic-bezier(.62,.05,0,1) .65s forwards}
 .ys-about-page .about-hero__intro{max-width:780px;margin:clamp(38px,5vh,62px) 0 0 clamp(150px,24vw,390px);font-size:clamp(18px,1.45vw,23px);font-weight:500;line-height:1.48;text-align:left}
-.about-scroll-hint{position:fixed;z-index:3;bottom:clamp(22px,4vh,46px);left:50%;display:block;width:clamp(76px,6vw,102px);color:var(--ys-navy);opacity:1;transform:translateX(-50%);transition:opacity .35s ease,visibility .35s ease}
+.about-scroll-hint{position:fixed;z-index:3;bottom:40px;left:50%;display:block;width:clamp(80px,calc(46.66667px + 2.77778vw),100px);color:var(--ys-navy);opacity:1;transform:translateX(-50%);transition:opacity .35s ease,visibility .35s ease}
 .about-scroll-hint.is-hidden{visibility:hidden;opacity:0}
 .about-scroll-hint svg{display:block;width:100%;height:auto;overflow:visible}
-.about-scroll-hint path{fill:none;stroke:currentColor;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round}
+.about-scroll-hint path{fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
 .about-scroll-hint__line,.about-scroll-hint__arrow{stroke-dasharray:100;stroke-dashoffset:100}
 .about-scroll-hint__line{animation:about-scroll-draw 1.35s cubic-bezier(.62,.05,0,1) 1.55s forwards}
 .about-scroll-hint__arrow{animation:about-scroll-draw .42s ease-out 2.65s forwards,about-scroll-bob 1.8s ease-in-out 3.1s infinite}
@@ -41,6 +41,15 @@
 @keyframes about-scroll-draw{to{stroke-dashoffset:0}}
 @keyframes about-scroll-text{to{opacity:1}}
 @keyframes about-scroll-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+@media(min-width:1200px){
+  .ys-about-page .legal-hero{min-height:calc(71svh + 19.5vw);padding-right:2.0833333333vw;padding-left:2.0833333333vw}
+  .about-hero__layout{width:71.3541666667vw;margin-right:0;margin-left:12.2395833333vw;padding-top:50px}
+  .ys-about-page .legal-hero h1{font-size:clamp(40px,calc(26.66667px + 2.77778vw),80px);line-height:1.15}
+  .about-title-line--indented{padding-left:12.2395833333vw}
+  .ys-about-page .about-eyebrow{top:55px;width:12.2395833333vw;font-size:clamp(14px,calc(13.33333px + .13889vw),16px);font-weight:700}
+  .ys-about-page .about-hero__intro{max-width:700px;margin:40px 0 0;font-size:18px;line-height:1.5}
+}
 
 .ys-about-page .about-copy{width:min(78%,1120px);padding-top:clamp(72px,8vw,110px);padding-bottom:clamp(110px,12vw,170px)}
 .ys-about-page .about-copy section{margin-top:0}
@@ -79,7 +88,7 @@
   .ys-about-page .about-eyebrow{margin-bottom:24px;font-size:13px}
   .about-title-line--indented{padding-left:7vw}
   .ys-about-page .about-hero__intro{margin:34px 0 0;font-size:18px;line-height:1.45}
-  .about-title-outline svg{top:-15%;left:-3%;width:106%;height:132%}
+  .about-title-outline svg{top:50%;left:50%;width:104%;height:112%}
   .about-photo{width:min(82vw,430px)}
   .about-photo::before{inset:-9px;border-width:9px}
   .about-panel{padding:28px 24px;border-radius:28px}
