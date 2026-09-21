@@ -138,7 +138,6 @@
                     <a href="#contact"><span class="ys-mega-menu__link-text">Medewerkers</span></a>
                     <a href="#contact"><span class="ys-mega-menu__link-text">Verwijzers</span></a>
                   </nav>
-                  <span class="ys-mega-menu__count">4 pagina’s</span>
                 </article>
                 <article class="ys-mega-menu__card" data-menu-card="complaints">
                   <button type="button" class="ys-mega-menu__topic" role="tab" aria-selected="false" aria-controls="ys-menu-panel-complaints" tabindex="-1" data-menu-topic="complaints">
@@ -148,7 +147,6 @@
                     <a href="./klachtenregeling/"><span class="ys-mega-menu__link-text">Bij wie kun je terecht met je klacht</span></a>
                     <a href="./klachtenregeling/#stap-01"><span class="ys-mega-menu__link-text">Klachten van medewerkers</span></a>
                   </nav>
-                  <span class="ys-mega-menu__count">2 routes</span>
                 </article>
               </div>
               <figure class="ys-mega-menu__image-wrap">

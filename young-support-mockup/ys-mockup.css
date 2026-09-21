@@ -746,16 +746,6 @@ body.ys-mega-open .ys-mega-menu__image-wrap { transition-delay: .22s; }
 }
 .ys-mega-menu .ys-mega-menu__link-text { padding: 0; }
 .ys-mega-menu .ys-mega-menu__link-text::after { display: none; }
-.ys-mega-menu__count {
-  position: absolute;
-  right: 20px;
-  bottom: 16px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.ys-mega-menu__card.is-active .ys-mega-menu__count { display: none; }
 .ys-mega-menu .ys-mega-menu__image-wrap {
   position: relative;
   height: 100%;
