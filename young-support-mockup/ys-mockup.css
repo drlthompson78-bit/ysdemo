@@ -729,7 +729,7 @@ body.ys-mega-open .ys-mega-menu__image-wrap { transition-delay: .22s; }
   font-size: clamp(15px, 1.25vw, 19px);
   font-weight: 700;
   line-height: 1.12;
-  transition: background-size .48s cubic-bezier(.22,.8,.24,1), color .2s ease, border-color .2s ease;
+  transition: background-size .85s cubic-bezier(.22,.8,.24,1), color .28s ease, border-color .28s ease;
 }
 .ys-mega-menu .ys-mega-menu__panel a:hover,
 .ys-mega-menu .ys-mega-menu__panel a:focus-visible {
@@ -1722,7 +1722,7 @@ body.ys-mega-open .ys-mega-menu__stage { transition-delay: .15s; }
     font-weight: 600;
     line-height: 1.22;
     text-decoration: none;
-    transition: background-size .48s cubic-bezier(.22,.8,.24,1), color .2s ease, border-color .2s ease;
+    transition: background-size .85s cubic-bezier(.22,.8,.24,1), color .28s ease, border-color .28s ease;
   }
   .ys-mobile-menu-group.is-open .ys-mobile-menu-panel a { color: var(--white); }
   .ys-mobile-menu-group.is-open .ys-mobile-menu-panel a:hover,
