@@ -366,8 +366,8 @@
   const mobileMenuToggle = document.querySelector('[data-menu-toggle]');
   if (mobileMenuToggle) {
     const menuSweepPath = 'M66.858-19C57.597 196.452 127.164 482.585 206.5 464.5c125.428-28.592 52.293-293.51 200.001-339 568.234-175-241.425 712.6 15.5 803.02C645 1007 629.398 499 810.5 499c113.398 0 106.54 189.465 164.235 429.52 48.005 199.72 89.415 213.09 105.265 173.78';
-    const runMobileMenuSweep = () => {
-      if (!matchMedia('(max-width: 991px)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const canSweepMenu = () => matchMedia('(max-width: 991px)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches && window.gsap && window.DrawSVGPlugin;
+    const createMobileMenuSweep = () => {
       document.querySelector('.ys-mobile-menu-sweep')?.remove();
       const sweep = document.createElement('div');
       sweep.className = 'ys-mobile-menu-sweep';
@@ -384,14 +384,16 @@
         sweep.remove();
         document.body.classList.remove('ys-mobile-menu-sweep-opening');
       };
-      if (window.gsap && window.DrawSVGPlugin) {
-        window.gsap.registerPlugin(window.DrawSVGPlugin);
-        const timeline = window.gsap.timeline({
-          onComplete: finish,
-        });
-        timeline.set(path, { drawSVG: '0% 100%', strokeWidth: '70%' }, 0);
-        timeline.to(backdrop, { opacity: 0, duration: .12, ease: 'none' }, 0);
-        timeline.to(path, {
+      window.gsap.registerPlugin(window.DrawSVGPlugin);
+      return { sweep, backdrop, path, finish };
+    };
+    const revealMobileMenu = () => {
+      if (!canSweepMenu()) return;
+      const { backdrop, path, finish } = createMobileMenuSweep();
+      const timeline = window.gsap.timeline({ onComplete: finish });
+      timeline.set(path, { drawSVG: '0% 100%', strokeWidth: '70%' }, 0);
+      timeline.to(backdrop, { opacity: 0, duration: .12, ease: 'none' }, 0);
+      timeline.to(path, {
           keyframes: {
             '95%': { strokeWidth: '8%', ease: 'circ.out' },
             '100%': { drawSVG: '100% 100%' },
@@ -399,10 +401,45 @@
           duration: 1.25,
           ease: 'power1.out',
         }, 0);
-      } else finish();
       window.setTimeout(finish, 1500);
     };
-    mobileMenuToggle.addEventListener('click', runMobileMenuSweep, true);
+    mobileMenuToggle.addEventListener('click', revealMobileMenu, true);
+
+    let closeSweepBypass = false;
+    mobileMenuClose?.addEventListener('click', (event) => {
+      if (closeSweepBypass || !canSweepMenu()) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      const { backdrop, path, finish } = createMobileMenuSweep();
+      const timeline = window.gsap.timeline({ onComplete: finish });
+      timeline.set(backdrop, { opacity: 0 }, 0);
+      timeline.set(path, { drawSVG: '0% 0%', strokeWidth: '8%' }, 0);
+      timeline.to(path, {
+        keyframes: {
+          '88%': { drawSVG: '0% 100%', strokeWidth: '8%' },
+          '100%': { strokeWidth: '70%' },
+        },
+        duration: .48,
+        ease: 'power2.in',
+      }, 0);
+      timeline.call(() => {
+        closeSweepBypass = true;
+        mobileMenuClose.click();
+        closeSweepBypass = false;
+      });
+      timeline.set(backdrop, { opacity: 1 });
+      timeline.set(path, { drawSVG: '0% 100%', strokeWidth: '70%' });
+      timeline.to(backdrop, { opacity: 0, duration: .1, ease: 'none' });
+      timeline.to(path, {
+        keyframes: {
+          '95%': { strokeWidth: '8%', ease: 'circ.out' },
+          '100%': { drawSVG: '100% 100%' },
+        },
+        duration: .72,
+        ease: 'power1.out',
+      }, '<');
+      window.setTimeout(finish, 1500);
+    }, true);
   }
 
   const mobileLogin = document.querySelector('.menu__login');
