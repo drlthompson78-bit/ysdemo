@@ -40,6 +40,17 @@
     return `<li class="menu__nav-list-item"><a data-button href="${href}" class="button w-inline-block"><span class="button__bg"></span><span class="button__inner"><span data-button-text class="button__text" aria-label="${label}">${label}</span></span></a></li>`;
   }
 
+  function mobileMenuGroup(label, key, links) {
+    return `<li class="menu__nav-list-item ys-mobile-menu-group">
+      <button type="button" class="ys-mobile-menu-topic" aria-expanded="false" aria-controls="ys-mobile-menu-${key}">
+        <span>${label}</span><span class="ys-menu-chevron" aria-hidden="true">›</span>
+      </button>
+      <ul id="ys-mobile-menu-${key}" class="ys-mobile-menu-panel" hidden>
+        ${links.map(({ label: itemLabel, href, attrs = '' }) => `<li><a href="${href}" ${attrs}>${itemLabel}</a></li>`).join('')}
+      </ul>
+    </li>`;
+  }
+
   document.title = 'YoungSupport - Website mockup';
   document.documentElement.lang = 'nl';
   const favicon = document.querySelector('link[rel="shortcut icon"]');
@@ -102,20 +113,37 @@
         <div class="ys-mega-backdrop" aria-hidden="true"></div>
         <div id="ys-mega-menu" class="ys-mega-menu" aria-label="Over ons menu" aria-hidden="true" inert>
           <div class="ys-mega-menu__grid">
-            <div class="ys-mega-menu__column">
-              <span class="ys-mega-menu__tag">Ontdek YoungSupport</span>
-              <nav aria-label="Ontdek YoungSupport" class="ys-mega-menu__links">
-                <a href="./over-ons/"><span class="ys-mega-menu__link-text">Over ons</span></a>
-                <a href="#over-ons"><span class="ys-mega-menu__link-text">Voor wie we er zijn</span></a>
-                <a href="#how-it-works"><span class="ys-mega-menu__link-text">Onze aanpak</span></a>
-              </nav>
+            <div class="ys-mega-menu__column ys-mega-menu__groups">
+              <span class="ys-mega-menu__tag">Vind je weg</span>
+              <div class="ys-mega-menu__topics" role="tablist" aria-label="Onderwerpen">
+                <button type="button" class="ys-mega-menu__topic is-active" role="tab" aria-selected="true" aria-controls="ys-menu-panel-about" data-menu-topic="about">
+                  <span>Over YoungSupport</span><span class="ys-menu-chevron" aria-hidden="true">›</span>
+                </button>
+                <button type="button" class="ys-mega-menu__topic" role="tab" aria-selected="false" aria-controls="ys-menu-panel-information" tabindex="-1" data-menu-topic="information">
+                  <span>Informatie voor …</span><span class="ys-menu-chevron" aria-hidden="true">›</span>
+                </button>
+                <button type="button" class="ys-mega-menu__topic" role="tab" aria-selected="false" aria-controls="ys-menu-panel-complaints" tabindex="-1" data-menu-topic="complaints">
+                  <span>Complimenten en klachten</span><span class="ys-menu-chevron" aria-hidden="true">›</span>
+                </button>
+              </div>
               <a class="ys-mega-menu__email" href="mailto:info@youngsupport.nl">info@youngsupport.nl</a>
             </div>
-            <div class="ys-mega-menu__column">
-              <span class="ys-mega-menu__tag">Verder kijken</span>
-              <nav aria-label="Verder kijken" class="ys-mega-menu__links">
-                <a href="./Certificaat-ISO-9001-Young-Support.pdf" data-ys-certificate><span class="ys-mega-menu__link-text">Kwaliteit & certificaat</span></a>
-                <a href="#contact"><span class="ys-mega-menu__link-text">Neem contact op</span></a>
+            <div class="ys-mega-menu__column ys-mega-menu__details">
+              <span class="ys-mega-menu__tag" data-menu-detail-title>Over YoungSupport</span>
+              <nav id="ys-menu-panel-about" aria-label="Over YoungSupport" class="ys-mega-menu__links ys-mega-menu__panel is-active" role="tabpanel" data-menu-panel="about">
+                <a href="./over-ons/"><span class="ys-mega-menu__link-text">Onze missie / Visie</span></a>
+                <a href="./Certificaat-ISO-9001-Young-Support.pdf" data-ys-certificate><span class="ys-mega-menu__link-text">Onze Kwaliteit</span></a>
+                <a href="#how-it-works"><span class="ys-mega-menu__link-text">Onze Werkwijze</span></a>
+              </nav>
+              <nav id="ys-menu-panel-information" aria-label="Informatie voor" class="ys-mega-menu__links ys-mega-menu__panel" role="tabpanel" data-menu-panel="information" hidden>
+                <a href="#over-ons"><span class="ys-mega-menu__link-text">Jongeren</span></a>
+                <a href="#over-ons"><span class="ys-mega-menu__link-text">Jongvolwassenen</span></a>
+                <a href="#contact"><span class="ys-mega-menu__link-text">Medewerkers</span></a>
+                <a href="#contact"><span class="ys-mega-menu__link-text">Verwijzers</span></a>
+              </nav>
+              <nav id="ys-menu-panel-complaints" aria-label="Complimenten en klachten" class="ys-mega-menu__links ys-mega-menu__panel" role="tabpanel" data-menu-panel="complaints" hidden>
+                <a href="./klachtenregeling/"><span class="ys-mega-menu__link-text">Bij wie kun je terecht met je klacht</span></a>
+                <a href="./klachtenregeling/#stap-01"><span class="ys-mega-menu__link-text">Klachten van medewerkers</span></a>
               </nav>
               <div class="ys-mega-menu__legal">
                 <a href="./privacybeleid/">Privacybeleid</a>
@@ -131,6 +159,41 @@
       const panel = document.getElementById('ys-mega-menu');
       const backdrop = document.querySelector('.ys-mega-backdrop');
       const desktopMenu = window.matchMedia('(min-width: 992px)');
+      const topicButtons = [...panel.querySelectorAll('[data-menu-topic]')];
+      const topicPanels = [...panel.querySelectorAll('[data-menu-panel]')];
+      const detailTitle = panel.querySelector('[data-menu-detail-title]');
+      const activateTopic = (button, moveFocus = false) => {
+        const topic = button.dataset.menuTopic;
+        topicButtons.forEach((item) => {
+          const active = item === button;
+          item.classList.toggle('is-active', active);
+          item.setAttribute('aria-selected', String(active));
+          item.tabIndex = active ? 0 : -1;
+        });
+        topicPanels.forEach((item) => {
+          const active = item.dataset.menuPanel === topic;
+          item.hidden = !active;
+          item.classList.toggle('is-active', active);
+        });
+        if (detailTitle) detailTitle.textContent = button.querySelector('span')?.textContent || '';
+        if (moveFocus) button.focus();
+      };
+      topicButtons.forEach((button, index) => {
+        button.addEventListener('click', () => activateTopic(button));
+        button.addEventListener('pointerenter', (event) => {
+          if (event.pointerType !== 'touch') activateTopic(button);
+        });
+        button.addEventListener('keydown', (event) => {
+          let nextIndex = index;
+          if (event.key === 'ArrowDown') nextIndex = (index + 1) % topicButtons.length;
+          else if (event.key === 'ArrowUp') nextIndex = (index - 1 + topicButtons.length) % topicButtons.length;
+          else if (event.key === 'Home') nextIndex = 0;
+          else if (event.key === 'End') nextIndex = topicButtons.length - 1;
+          else return;
+          event.preventDefault();
+          activateTopic(topicButtons[nextIndex], true);
+        });
+      });
       let finishCloseTimer;
       let openedByHover = false;
       const finishClose = () => {
@@ -176,13 +239,13 @@
       dropdownTrigger.addEventListener('click', (event) => {
         if (openedByHover) {
           openedByHover = false;
-          if (event.detail === 0) panel.querySelector('a')?.focus();
+          if (event.detail === 0) panel.querySelector('[data-menu-topic]')?.focus();
           return;
         }
         if (dropdownTrigger.getAttribute('aria-expanded') === 'true') closeDropdown();
         else {
           openDropdown();
-          if (event.detail === 0) panel.querySelector('a')?.focus();
+          if (event.detail === 0) panel.querySelector('[data-menu-topic]')?.focus();
         }
       });
       dropdown.addEventListener('pointerenter', () => {
@@ -244,12 +307,38 @@
   const mobileNavigation = document.querySelector('.menu__nav-list');
   if (mobileNavigation) {
     mobileNavigation.innerHTML = [
-      mobileMenuButton('Over ons', './over-ons/'),
-      mobileMenuButton('Voor wie', '#over-ons'),
-      mobileMenuButton('Onze aanpak', '#how-it-works'),
-      mobileMenuButton('Onze visie', '#onze-visie'),
+      mobileMenuGroup('Over YoungSupport', 'about', [
+        { label: 'Onze missie / Visie', href: './over-ons/' },
+        { label: 'Onze Kwaliteit', href: './Certificaat-ISO-9001-Young-Support.pdf', attrs: 'data-ys-certificate' },
+        { label: 'Onze Werkwijze', href: '#how-it-works' },
+      ]),
+      mobileMenuGroup('Informatie voor …', 'information', [
+        { label: 'Jongeren', href: '#over-ons' },
+        { label: 'Jongvolwassenen', href: '#over-ons' },
+        { label: 'Medewerkers', href: '#contact' },
+        { label: 'Verwijzers', href: '#contact' },
+      ]),
+      mobileMenuGroup('Complimenten en klachten', 'complaints', [
+        { label: 'Bij wie kun je terecht met je klacht', href: './klachtenregeling/' },
+        { label: 'Klachten van medewerkers', href: './klachtenregeling/#stap-01' },
+      ]),
       mobileMenuButton('Aanmelden', './aanmelden/'),
     ].join('');
+
+    const mobileMenuTopics = [...mobileNavigation.querySelectorAll('.ys-mobile-menu-topic')];
+    mobileMenuTopics.forEach((button) => {
+      button.addEventListener('click', () => {
+        const panel = document.getElementById(button.getAttribute('aria-controls'));
+        const willOpen = button.getAttribute('aria-expanded') !== 'true';
+        mobileMenuTopics.forEach((item) => {
+          item.setAttribute('aria-expanded', 'false');
+          const itemPanel = document.getElementById(item.getAttribute('aria-controls'));
+          if (itemPanel) itemPanel.hidden = true;
+        });
+        button.setAttribute('aria-expanded', String(willOpen));
+        if (panel) panel.hidden = !willOpen;
+      });
+    });
   }
 
   const mobileLogin = document.querySelector('.menu__login [data-button-alt]');
