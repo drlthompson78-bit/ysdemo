@@ -16,7 +16,7 @@
       observer?.disconnect();
       clearTimeout(fallback);
       requestAnimationFrame(() => {
-        setTimeout(() => document.body.classList.add('about-motion-ready'), 650);
+        setTimeout(() => document.body.classList.add('about-motion-ready'), 320);
       });
     };
     if (transitionFinished()) { begin(); return; }
