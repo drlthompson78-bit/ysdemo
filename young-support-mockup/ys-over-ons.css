@@ -22,6 +22,8 @@
 .about-hero__layout{position:relative;width:min(100%,1380px);margin:0 auto;padding-top:clamp(46px,7vh,92px)}
 .ys-about-page .legal-hero h1{max-width:none;margin:0;font-size:clamp(52px,6.45vw,104px);font-weight:900;letter-spacing:-.055em;line-height:.96;text-align:left}
 .about-title-line{display:block}
+.ys-about-page .about-title-desktop{display:block!important}
+.ys-about-page .about-title-mobile{display:none!important}
 .about-title-line--indented{padding-left:clamp(150px,18vw,310px)}
 .ys-about-page .about-eyebrow{position:absolute;top:clamp(55px,7.7vh,101px);left:0;width:clamp(120px,14vw,220px);margin:0;color:var(--ys-navy);font-size:clamp(14px,1.2vw,19px);font-weight:700;letter-spacing:0;text-transform:none}
 .ys-about-page .legal-hero .about-title-outline{position:relative;display:inline-block;isolation:isolate;margin-right:.12em;white-space:nowrap}
@@ -87,10 +89,13 @@
   .ys-about-page .legal-header nav a:not(:last-child){display:none}
   .ys-about-page .legal-hero{min-height:clamp(680px,100svh,760px);padding:104px 20px 112px}
   .about-hero__layout{padding-top:12px}
-  .ys-about-page .legal-hero h1{font-size:clamp(36px,10.5vw,50px);line-height:.98}
+  .ys-about-page .legal-hero h1{font-size:clamp(37px,11.7vw,47px);line-height:.91}
   .ys-about-page .about-eyebrow{margin-bottom:18px;font-size:13px}
-  .about-title-line--indented{padding-left:7vw}
-  .ys-about-page .about-hero__intro{max-width:31em;margin:28px 0 0;font-size:clamp(17px,4.6vw,18px);line-height:1.42}
+  .ys-about-page .about-title-desktop{display:none!important}
+  .ys-about-page .about-title-mobile{display:block!important}
+  .about-title-mobile .about-title-line{padding-left:0;white-space:nowrap}
+  .ys-about-page .about-hero__intro{max-width:31em;margin:32px 0 0;font-size:clamp(16px,4.35vw,17px);line-height:1.44}
+  .about-hero__lead{display:block;margin-bottom:10px;font-size:clamp(18px,4.85vw,19px);font-weight:700;line-height:1.35}
   .about-title-outline svg{top:50%;left:50%;width:104%;height:112%}
   .about-scroll-hint{position:absolute;bottom:18px;width:66px}
   .about-photo{width:min(82vw,430px)}
