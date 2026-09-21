@@ -36,19 +36,14 @@
     return `<li class="header__nav-list-item"><a data-button-alt data-wf--button-alt--variant="base" href="${href}" class="button-alt w-inline-block"><span class="button-alt__text-wrap"><span class="button-alt__bg"></span><span class="button-alt__text-outer"><span data-button-alt-text class="button-alt__text" aria-label="${label}">${label}</span></span></span><span class="button-alt__icon-wrap"><span class="button-alt__bg"></span><span class="button-alt__icon-outer">${arrow}</span></span></a></li>`;
   }
 
-  function mobileMenuButton(label, href) {
-    return `<li class="menu__nav-list-item"><a data-button href="${href}" class="button w-inline-block"><span class="button__bg"></span><span class="button__inner"><span data-button-text class="button__text" aria-label="${label}">${label}</span></span></a></li>`;
-  }
-
-  function mobileMenuGroup(label, key, links) {
-    return `<li class="menu__nav-list-item ys-mobile-menu-group">
-      <button type="button" class="ys-mobile-menu-topic" aria-expanded="false" aria-controls="ys-mobile-menu-${key}">
-        <span>${label}</span><span class="ys-menu-chevron" aria-hidden="true">›</span>
-      </button>
-      <ul id="ys-mobile-menu-${key}" class="ys-mobile-menu-panel" hidden>
-        ${links.map(({ label: itemLabel, href, attrs = '' }) => `<li><a href="${href}" ${attrs}>${itemLabel}</a></li>`).join('')}
+  function mobileMenuGroup(label, shortLabel, key, links, active = false) {
+    return `<section id="ys-mobile-menu-${key}" class="ys-mobile-menu-group${active ? ' is-active' : ''}" role="tabpanel" aria-labelledby="ys-mobile-topic-${key}" data-mobile-menu-group="${key}" ${active ? '' : 'hidden'}>
+      <p class="ys-mobile-menu-breadcrumb"><span>Menu</span><span aria-hidden="true">›</span><span>${shortLabel}</span></p>
+      <h2>${label}</h2>
+      <ul class="ys-mobile-menu-panel">
+        ${links.map(({ label: itemLabel, href, attrs = '' }) => `<li><a href="${href}" ${attrs}><span>${itemLabel}</span><span class="ys-mobile-route-arrow" aria-hidden="true">→</span></a></li>`).join('')}
       </ul>
-    </li>`;
+    </section>`;
   }
 
   document.title = 'YoungSupport - Website mockup';
@@ -307,59 +302,70 @@
 
   const mobileNavigation = document.querySelector('.menu__nav-list');
   if (mobileNavigation) {
-    mobileNavigation.innerHTML = [
-      mobileMenuGroup('Over YoungSupport', 'about', [
+    const mobileGroups = [
+      mobileMenuGroup('Over YoungSupport', 'Over ons', 'about', [
         { label: 'Onze missie / Visie', href: './over-ons/' },
         { label: 'Onze Kwaliteit', href: './Certificaat-ISO-9001-Young-Support.pdf', attrs: 'data-ys-certificate' },
         { label: 'Onze Werkwijze', href: '#how-it-works' },
-      ]),
-      mobileMenuGroup('Informatie voor …', 'information', [
+      ], true),
+      mobileMenuGroup('Informatie voor …', 'Voor wie', 'information', [
         { label: 'Jongeren', href: '#over-ons' },
         { label: 'Jongvolwassenen', href: '#over-ons' },
         { label: 'Medewerkers', href: '#contact' },
         { label: 'Verwijzers', href: '#contact' },
       ]),
-      mobileMenuGroup('Complimenten en klachten', 'complaints', [
+      mobileMenuGroup('Complimenten en klachten', 'Klachten', 'complaints', [
         { label: 'Bij wie kun je terecht met je klacht', href: './klachtenregeling/' },
         { label: 'Klachten van medewerkers', href: './klachtenregeling/#stap-01' },
       ]),
-      mobileMenuButton('Aanmelden', './aanmelden/'),
     ].join('');
+    mobileNavigation.innerHTML = `<li class="ys-mobile-drilldown">
+      <div class="ys-mobile-drilldown__pages">${mobileGroups}</div>
+      <div class="ys-mobile-topic-tabs" role="tablist" aria-label="Hoofdonderwerpen">
+        <button id="ys-mobile-topic-about" type="button" class="ys-mobile-topic-tab is-active" role="tab" aria-selected="true" aria-controls="ys-mobile-menu-about" data-mobile-topic="about">Over ons</button>
+        <button id="ys-mobile-topic-information" type="button" class="ys-mobile-topic-tab" role="tab" aria-selected="false" aria-controls="ys-mobile-menu-information" data-mobile-topic="information" tabindex="-1">Voor wie</button>
+        <button id="ys-mobile-topic-complaints" type="button" class="ys-mobile-topic-tab" role="tab" aria-selected="false" aria-controls="ys-mobile-menu-complaints" data-mobile-topic="complaints" tabindex="-1">Klachten</button>
+      </div>
+    </li>`;
 
-    const mobileMenuTopics = [...mobileNavigation.querySelectorAll('.ys-mobile-menu-topic')];
+    const mobileMenuTopics = [...mobileNavigation.querySelectorAll('[data-mobile-topic]')];
+    const mobileMenuGroups = [...mobileNavigation.querySelectorAll('[data-mobile-menu-group]')];
     mobileMenuTopics.forEach((button) => {
       button.addEventListener('click', () => {
-        const panel = document.getElementById(button.getAttribute('aria-controls'));
-        const willOpen = button.getAttribute('aria-expanded') !== 'true';
+        const key = button.dataset.mobileTopic;
         mobileMenuTopics.forEach((item) => {
-          item.setAttribute('aria-expanded', 'false');
-          item.closest('.ys-mobile-menu-group')?.classList.remove('is-open');
-          const itemPanel = document.getElementById(item.getAttribute('aria-controls'));
-          if (itemPanel) itemPanel.hidden = true;
+          const selected = item === button;
+          item.classList.toggle('is-active', selected);
+          item.setAttribute('aria-selected', String(selected));
+          item.tabIndex = selected ? 0 : -1;
         });
-        button.setAttribute('aria-expanded', String(willOpen));
-        button.closest('.ys-mobile-menu-group')?.classList.toggle('is-open', willOpen);
-        if (panel) panel.hidden = !willOpen;
+        mobileMenuGroups.forEach((group) => {
+          const selected = group.dataset.mobileMenuGroup === key;
+          group.classList.toggle('is-active', selected);
+          group.hidden = !selected;
+        });
+      });
+      button.addEventListener('keydown', (event) => {
+        const currentIndex = mobileMenuTopics.indexOf(button);
+        let nextIndex = null;
+        if (event.key === 'ArrowRight') nextIndex = (currentIndex + 1) % mobileMenuTopics.length;
+        if (event.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + mobileMenuTopics.length) % mobileMenuTopics.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = mobileMenuTopics.length - 1;
+        if (nextIndex === null) return;
+        event.preventDefault();
+        mobileMenuTopics[nextIndex].focus();
+        mobileMenuTopics[nextIndex].click();
       });
     });
-    const firstMobileTopic = mobileMenuTopics[0];
-    if (firstMobileTopic) {
-      firstMobileTopic.setAttribute('aria-expanded', 'true');
-      firstMobileTopic.closest('.ys-mobile-menu-group')?.classList.add('is-open');
-      const firstMobilePanel = document.getElementById(firstMobileTopic.getAttribute('aria-controls'));
-      if (firstMobilePanel) firstMobilePanel.hidden = false;
-    }
   }
 
-  const mobileLogin = document.querySelector('.menu__login [data-button-alt]');
+  const mobileMenuClose = document.querySelector('[data-menu-close]');
+  if (mobileMenuClose) mobileMenuClose.setAttribute('aria-label', 'Menu sluiten');
+
+  const mobileLogin = document.querySelector('.menu__login');
   if (mobileLogin) {
-    mobileLogin.href = './aanmelden/';
-    mobileLogin.removeAttribute('target');
-    const mobileLoginText = mobileLogin.querySelector('[data-button-alt-text]');
-    if (mobileLoginText) {
-      mobileLoginText.textContent = 'Aanmelden';
-      mobileLoginText.setAttribute('aria-label', 'Aanmelden');
-    }
+    mobileLogin.innerHTML = `<a class="ys-mobile-menu-enrol" href="./aanmelden/"><span>Aanmelden</span><span aria-hidden="true">→</span></a>`;
   }
 
   document.querySelectorAll('a[href="./aanmelden/"]').forEach(link => {
@@ -372,13 +378,8 @@
 
   const mobileMenuSub = document.querySelector('.menu__sub');
   if (mobileMenuSub) {
-    mobileMenuSub.innerHTML = `
-      <p class="ys-menu__social-label">Volg YoungSupport</p>
-      <div class="ys-menu__socials" aria-label="Social media">
-        <a href="#" class="button-social ys-menu__social w-inline-block" aria-label="YoungSupport op LinkedIn"><span class="button-social__inner"><span class="button-social__bg"></span><span class="button-social__icon-outer">${linkedinIcon}</span></span></a>
-        <a href="#" class="button-social ys-menu__social w-inline-block" aria-label="YoungSupport op Instagram"><span class="button-social__inner"><span class="button-social__bg"></span><span class="button-social__icon-outer">${instagramIcon}</span></span></a>
-      </div>`;
-    mobileMenuSub.querySelectorAll('a').forEach((link) => link.addEventListener('click', (event) => event.preventDefault()));
+    mobileMenuSub.replaceChildren();
+    mobileMenuSub.hidden = true;
   }
 
   document.querySelectorAll('.menu__nav-list a[href^="#"]').forEach((link) => {
