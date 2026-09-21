@@ -115,7 +115,6 @@
           <div class="ys-mega-menu__grid ys-mega-menu__modular">
             <div class="ys-mega-menu__intro">
               <h2>Waar kunnen we je mee helpen?</h2>
-              <p>Kies een onderwerp. De belangrijkste informatie staat direct in beeld.</p>
             </div>
             <div class="ys-mega-menu__stage">
               <div class="ys-mega-menu__cards" role="tablist" aria-label="Onderwerpen" data-active-topic="about">
