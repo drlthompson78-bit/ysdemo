@@ -372,14 +372,35 @@
       const sweep = document.createElement('div');
       sweep.className = 'ys-mobile-menu-sweep';
       sweep.setAttribute('aria-hidden', 'true');
-      sweep.innerHTML = `<div class="ys-mobile-menu-sweep__backdrop"></div><div class="ys-mobile-menu-sweep__shape"><svg viewBox="0 0 1080 1080" fill="none" preserveAspectRatio="none"><path pathLength="100" d="${menuSweepPath}" stroke="currentColor" stroke-width="70%" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
+      sweep.innerHTML = `<div class="ys-mobile-menu-sweep__backdrop"></div><div class="ys-mobile-menu-sweep__shape"><svg viewBox="0 0 1080 1080" fill="none" preserveAspectRatio="none"><path d="${menuSweepPath}" stroke="currentColor" stroke-width="70%" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
       document.body.appendChild(sweep);
       document.body.classList.add('ys-mobile-menu-sweep-opening');
-      requestAnimationFrame(() => sweep.classList.add('is-running'));
-      window.setTimeout(() => {
+      const backdrop = sweep.querySelector('.ys-mobile-menu-sweep__backdrop');
+      const path = sweep.querySelector('path');
+      let finished = false;
+      const finish = () => {
+        if (finished) return;
+        finished = true;
         sweep.remove();
         document.body.classList.remove('ys-mobile-menu-sweep-opening');
-      }, 980);
+      };
+      if (window.gsap && window.DrawSVGPlugin) {
+        window.gsap.registerPlugin(window.DrawSVGPlugin);
+        const timeline = window.gsap.timeline({
+          onComplete: finish,
+        });
+        timeline.set(path, { drawSVG: '0% 100%', strokeWidth: '70%' }, 0);
+        timeline.to(backdrop, { opacity: 0, duration: .12, ease: 'none' }, 0);
+        timeline.to(path, {
+          keyframes: {
+            '95%': { strokeWidth: '8%', ease: 'circ.out' },
+            '100%': { drawSVG: '100% 100%' },
+          },
+          duration: 1.25,
+          ease: 'power1.out',
+        }, 0);
+      } else finish();
+      window.setTimeout(finish, 1500);
     };
     mobileMenuToggle.addEventListener('click', runMobileMenuSweep, true);
   }
