@@ -38,7 +38,6 @@
 
   function mobileMenuGroup(label, shortLabel, key, links, active = false) {
     return `<section id="ys-mobile-menu-${key}" class="ys-mobile-menu-group${active ? ' is-active' : ''}" role="tabpanel" aria-labelledby="ys-mobile-topic-${key}" data-mobile-menu-group="${key}" ${active ? '' : 'hidden'}>
-      <p class="ys-mobile-menu-breadcrumb"><span>Menu</span><span aria-hidden="true">›</span><span>${shortLabel}</span></p>
       <h2>${label}</h2>
       <ul class="ys-mobile-menu-panel">
         ${links.map(({ label: itemLabel, href, attrs = '' }) => `<li><a href="${href}" ${attrs}><span>${itemLabel}</span><span class="ys-mobile-route-arrow" aria-hidden="true">→</span></a></li>`).join('')}

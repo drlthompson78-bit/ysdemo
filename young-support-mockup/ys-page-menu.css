@@ -110,17 +110,9 @@
   .ys-page-menu__card {
     padding:1.35rem 1.1rem 1.1rem;
     border-radius:1.75rem;
-    background:#082f62;
+    background:#082f62 !important;
     color:#fffdf8;
     box-shadow:0 1.15rem 2.75rem rgba(8,47,98,.17);
-  }
-  .ys-page-menu__crumb {
-    margin:0 0 .8rem;
-    color:rgba(255,253,248,.68);
-    font-size:.68rem;
-    font-weight:700;
-    letter-spacing:.12em;
-    text-transform:uppercase;
   }
   .ys-page-menu__card h2 {
     margin:0 0 1.1rem;

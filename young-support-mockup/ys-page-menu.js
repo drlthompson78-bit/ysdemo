@@ -66,7 +66,7 @@
   const showGroup = (key, focusTab) => {
     active = key;
     const group = groups[key];
-    card.innerHTML = `<p class="ys-page-menu__crumb">Menu&nbsp;&nbsp;›&nbsp;&nbsp;${group.short}</p><h2>${group.title}</h2><ul class="ys-page-menu__links">${group.links.map(([label, href]) => `<li><a href="${href}"><span>${label}</span><span class="ys-page-menu__arrow" aria-hidden="true">→</span></a></li>`).join('')}</ul>`;
+    card.innerHTML = `<h2>${group.title}</h2><ul class="ys-page-menu__links">${group.links.map(([label, href]) => `<li><a href="${href}"><span>${label}</span><span class="ys-page-menu__arrow" aria-hidden="true">→</span></a></li>`).join('')}</ul>`;
     tabs.querySelectorAll('button').forEach((button) => {
       const selected = button.dataset.group === key;
       button.classList.toggle('is-active', selected);

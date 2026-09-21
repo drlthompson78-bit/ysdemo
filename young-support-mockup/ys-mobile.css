@@ -601,24 +601,12 @@
     display: block;
     padding: 1.45rem 1.25rem 1.25rem;
     border-radius: 1.75rem;
-    background: #082f62;
+    background: #082f62 !important;
     color: #fffdf8;
     box-shadow: 0 1.15rem 2.75rem rgba(8, 47, 98, .16);
     animation: ys-mobile-menu-page-in .3s cubic-bezier(.22, .8, .24, 1) both;
   }
   .ys-mobile-menu-group[hidden] { display: none !important; }
-  .ys-mobile-menu-breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: .45rem;
-    margin: 0 0 .85rem;
-    color: rgba(255, 253, 248, .68);
-    font-size: .68rem;
-    font-weight: 700;
-    letter-spacing: .12em;
-    line-height: 1;
-    text-transform: uppercase;
-  }
   .ys-mobile-menu-group h2 {
     margin: 0 0 1.15rem;
     color: #fffdf8;
@@ -771,7 +759,6 @@
   }
   .menu__nav { margin-top: .65rem !important; }
   .ys-mobile-menu-group { padding: 1rem .95rem .95rem; border-radius: 1.4rem; }
-  .ys-mobile-menu-breadcrumb { margin-bottom: .6rem; }
   .ys-mobile-menu-group h2 { margin-bottom: .8rem; font-size: 1.75rem; }
   .ys-mobile-menu-panel { gap: .42rem !important; }
   .ys-mobile-menu-panel a {
