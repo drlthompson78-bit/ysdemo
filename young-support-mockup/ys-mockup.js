@@ -154,7 +154,7 @@
               </figure>
             </div>
             <div class="ys-mega-menu__footer">
-              <div><a class="ys-mega-menu__email" href="mailto:info@youngsupport.nl">info@youngsupport.nl</a><a href="./privacybeleid/">Privacybeleid</a><a href="./algemene-voorwaarden/">Algemene voorwaarden</a></div>
+              <div><a class="ys-mega-menu__email" href="mailto:info@youngsupport.nl">info@youngsupport.nl</a></div>
               <a class="ys-mega-menu__contact" href="#contact">Neem contact op <span>→</span></a>
             </div>
           </div>
