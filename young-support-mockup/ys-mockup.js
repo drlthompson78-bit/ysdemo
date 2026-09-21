@@ -363,6 +363,27 @@
   const mobileMenuClose = document.querySelector('[data-menu-close]');
   if (mobileMenuClose) mobileMenuClose.setAttribute('aria-label', 'Menu sluiten');
 
+  const mobileMenuToggle = document.querySelector('[data-menu-toggle]');
+  if (mobileMenuToggle) {
+    const menuSweepPath = 'M66.858-19C57.597 196.452 127.164 482.585 206.5 464.5c125.428-28.592 52.293-293.51 200.001-339 568.234-175-241.425 712.6 15.5 803.02C645 1007 629.398 499 810.5 499c113.398 0 106.54 189.465 164.235 429.52 48.005 199.72 89.415 213.09 105.265 173.78';
+    const runMobileMenuSweep = () => {
+      if (!matchMedia('(max-width: 991px)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      document.querySelector('.ys-mobile-menu-sweep')?.remove();
+      const sweep = document.createElement('div');
+      sweep.className = 'ys-mobile-menu-sweep';
+      sweep.setAttribute('aria-hidden', 'true');
+      sweep.innerHTML = `<div class="ys-mobile-menu-sweep__backdrop"></div><div class="ys-mobile-menu-sweep__shape"><svg viewBox="0 0 1080 1080" fill="none" preserveAspectRatio="none"><path pathLength="100" d="${menuSweepPath}" stroke="currentColor" stroke-width="70%" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
+      document.body.appendChild(sweep);
+      document.body.classList.add('ys-mobile-menu-sweep-opening');
+      requestAnimationFrame(() => sweep.classList.add('is-running'));
+      window.setTimeout(() => {
+        sweep.remove();
+        document.body.classList.remove('ys-mobile-menu-sweep-opening');
+      }, 980);
+    };
+    mobileMenuToggle.addEventListener('click', runMobileMenuSweep, true);
+  }
+
   const mobileLogin = document.querySelector('.menu__login');
   if (mobileLogin) {
     mobileLogin.innerHTML = `<a class="ys-mobile-menu-enrol" href="./aanmelden/"><span>Aanmelden</span><span aria-hidden="true">→</span></a>`;
