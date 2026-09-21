@@ -151,7 +151,6 @@
               </div>
               <figure class="ys-mega-menu__image-wrap">
                 <img src="./young-support-menu-photo.webp" alt="Jongere en begeleider lopen samen buiten" loading="lazy">
-                <figcaption><small>YoungSupport</small><strong>Jouw stap.<br>Onze support.</strong></figcaption>
               </figure>
             </div>
             <div class="ys-mega-menu__footer">
