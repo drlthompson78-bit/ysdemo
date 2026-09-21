@@ -153,10 +153,6 @@
                 <img src="./young-support-menu-photo.webp" alt="Jongere en begeleider lopen samen buiten" loading="lazy">
               </figure>
             </div>
-            <div class="ys-mega-menu__footer">
-              <div><a class="ys-mega-menu__email" href="mailto:info@youngsupport.nl">info@youngsupport.nl</a></div>
-              <a class="ys-mega-menu__contact" href="#contact">Neem contact op <span>→</span></a>
-            </div>
           </div>
         </div>`);
 
