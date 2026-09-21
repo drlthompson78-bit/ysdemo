@@ -112,46 +112,54 @@
       document.querySelector('.page-wrapper').insertAdjacentHTML('beforeend', `
         <div class="ys-mega-backdrop" aria-hidden="true"></div>
         <div id="ys-mega-menu" class="ys-mega-menu" aria-label="Over ons menu" aria-hidden="true" inert>
-          <div class="ys-mega-menu__grid">
-            <div class="ys-mega-menu__column ys-mega-menu__groups">
-              <span class="ys-mega-menu__tag">Vind je weg</span>
-              <div class="ys-mega-menu__topics" role="tablist" aria-label="Onderwerpen">
-                <button type="button" class="ys-mega-menu__topic is-active" role="tab" aria-selected="true" aria-controls="ys-menu-panel-about" data-menu-topic="about">
-                  <span>Over YoungSupport</span><span class="ys-menu-chevron" aria-hidden="true">›</span>
-                </button>
-                <button type="button" class="ys-mega-menu__topic" role="tab" aria-selected="false" aria-controls="ys-menu-panel-information" tabindex="-1" data-menu-topic="information">
-                  <span>Informatie voor …</span><span class="ys-menu-chevron" aria-hidden="true">›</span>
-                </button>
-                <button type="button" class="ys-mega-menu__topic" role="tab" aria-selected="false" aria-controls="ys-menu-panel-complaints" tabindex="-1" data-menu-topic="complaints">
-                  <span>Complimenten en klachten</span><span class="ys-menu-chevron" aria-hidden="true">›</span>
-                </button>
-              </div>
-              <a class="ys-mega-menu__email" href="mailto:info@youngsupport.nl">info@youngsupport.nl</a>
+          <div class="ys-mega-menu__grid ys-mega-menu__modular">
+            <div class="ys-mega-menu__intro">
+              <h2>Waar kunnen we je mee helpen?</h2>
+              <p>Kies een onderwerp. De belangrijkste informatie staat direct in beeld.</p>
             </div>
-            <div class="ys-mega-menu__column ys-mega-menu__details">
-              <span class="ys-mega-menu__tag" data-menu-detail-title>Over YoungSupport</span>
-              <nav id="ys-menu-panel-about" aria-label="Over YoungSupport" class="ys-mega-menu__links ys-mega-menu__panel is-active" role="tabpanel" data-menu-panel="about">
-                <a href="./over-ons/"><span class="ys-mega-menu__link-text">Onze missie / Visie</span></a>
-                <a href="./Certificaat-ISO-9001-Young-Support.pdf" data-ys-certificate><span class="ys-mega-menu__link-text">Onze Kwaliteit</span></a>
-                <a href="#how-it-works"><span class="ys-mega-menu__link-text">Onze Werkwijze</span></a>
-              </nav>
-              <nav id="ys-menu-panel-information" aria-label="Informatie voor" class="ys-mega-menu__links ys-mega-menu__panel" role="tabpanel" data-menu-panel="information" hidden>
-                <a href="#over-ons"><span class="ys-mega-menu__link-text">Jongeren</span></a>
-                <a href="#over-ons"><span class="ys-mega-menu__link-text">Jongvolwassenen</span></a>
-                <a href="#contact"><span class="ys-mega-menu__link-text">Medewerkers</span></a>
-                <a href="#contact"><span class="ys-mega-menu__link-text">Verwijzers</span></a>
-              </nav>
-              <nav id="ys-menu-panel-complaints" aria-label="Complimenten en klachten" class="ys-mega-menu__links ys-mega-menu__panel" role="tabpanel" data-menu-panel="complaints" hidden>
-                <a href="./klachtenregeling/"><span class="ys-mega-menu__link-text">Bij wie kun je terecht met je klacht</span></a>
-                <a href="./klachtenregeling/#stap-01"><span class="ys-mega-menu__link-text">Klachten van medewerkers</span></a>
-              </nav>
-              <div class="ys-mega-menu__legal">
-                <a href="./privacybeleid/">Privacybeleid</a>
-                <a href="./algemene-voorwaarden/">Algemene voorwaarden</a>
+            <div class="ys-mega-menu__stage">
+              <div class="ys-mega-menu__cards" role="tablist" aria-label="Onderwerpen" data-active-topic="about">
+                <article class="ys-mega-menu__card is-active" data-menu-card="about">
+                  <button type="button" class="ys-mega-menu__topic is-active" role="tab" aria-selected="true" aria-controls="ys-menu-panel-about" data-menu-topic="about">
+                    <span class="ys-mega-menu__card-copy"><strong>Over YoungSupport</strong><small>Dit zijn wij en zo werken we.</small></span><span class="ys-menu-chevron" aria-hidden="true">↗</span>
+                  </button>
+                  <nav id="ys-menu-panel-about" aria-label="Over YoungSupport" class="ys-mega-menu__links ys-mega-menu__panel is-active" role="tabpanel" data-menu-panel="about">
+                    <a href="./over-ons/"><span class="ys-mega-menu__link-text">Onze missie / Visie</span></a>
+                    <a href="./Certificaat-ISO-9001-Young-Support.pdf" data-ys-certificate><span class="ys-mega-menu__link-text">Onze Kwaliteit</span></a>
+                    <a href="#how-it-works"><span class="ys-mega-menu__link-text">Onze Werkwijze</span></a>
+                  </nav>
+                </article>
+                <article class="ys-mega-menu__card" data-menu-card="information">
+                  <button type="button" class="ys-mega-menu__topic" role="tab" aria-selected="false" aria-controls="ys-menu-panel-information" tabindex="-1" data-menu-topic="information">
+                    <span class="ys-mega-menu__card-copy"><strong>Informatie voor …</strong><small>Voor iedereen die met YoungSupport te maken heeft.</small></span><span class="ys-menu-chevron" aria-hidden="true">→</span>
+                  </button>
+                  <nav id="ys-menu-panel-information" aria-label="Informatie voor" class="ys-mega-menu__links ys-mega-menu__panel" role="tabpanel" data-menu-panel="information" hidden>
+                    <a href="#over-ons"><span class="ys-mega-menu__link-text">Jongeren</span></a>
+                    <a href="#over-ons"><span class="ys-mega-menu__link-text">Jongvolwassenen</span></a>
+                    <a href="#contact"><span class="ys-mega-menu__link-text">Medewerkers</span></a>
+                    <a href="#contact"><span class="ys-mega-menu__link-text">Verwijzers</span></a>
+                  </nav>
+                  <span class="ys-mega-menu__count">4 pagina’s</span>
+                </article>
+                <article class="ys-mega-menu__card" data-menu-card="complaints">
+                  <button type="button" class="ys-mega-menu__topic" role="tab" aria-selected="false" aria-controls="ys-menu-panel-complaints" tabindex="-1" data-menu-topic="complaints">
+                    <span class="ys-mega-menu__card-copy"><strong>Complimenten en klachten</strong><small>Lees welke route bij jouw situatie past.</small></span><span class="ys-menu-chevron" aria-hidden="true">→</span>
+                  </button>
+                  <nav id="ys-menu-panel-complaints" aria-label="Complimenten en klachten" class="ys-mega-menu__links ys-mega-menu__panel" role="tabpanel" data-menu-panel="complaints" hidden>
+                    <a href="./klachtenregeling/"><span class="ys-mega-menu__link-text">Bij wie kun je terecht met je klacht</span></a>
+                    <a href="./klachtenregeling/#stap-01"><span class="ys-mega-menu__link-text">Klachten van medewerkers</span></a>
+                  </nav>
+                  <span class="ys-mega-menu__count">2 routes</span>
+                </article>
               </div>
+              <figure class="ys-mega-menu__image-wrap">
+                <img src="./young-support-menu-photo.webp" alt="Jongere en begeleider lopen samen buiten" loading="lazy">
+                <figcaption><small>YoungSupport</small><strong>Jouw stap.<br>Onze support.</strong></figcaption>
+              </figure>
             </div>
-            <div class="ys-mega-menu__image-wrap">
-              <img src="./young-support-menu-photo.webp" alt="Jongere en begeleider lopen samen buiten" loading="lazy">
+            <div class="ys-mega-menu__footer">
+              <div><a class="ys-mega-menu__email" href="mailto:info@youngsupport.nl">info@youngsupport.nl</a><a href="./privacybeleid/">Privacybeleid</a><a href="./algemene-voorwaarden/">Algemene voorwaarden</a></div>
+              <a class="ys-mega-menu__contact" href="#contact">Neem contact op <span>→</span></a>
             </div>
           </div>
         </div>`);
@@ -161,7 +169,8 @@
       const desktopMenu = window.matchMedia('(min-width: 992px)');
       const topicButtons = [...panel.querySelectorAll('[data-menu-topic]')];
       const topicPanels = [...panel.querySelectorAll('[data-menu-panel]')];
-      const detailTitle = panel.querySelector('[data-menu-detail-title]');
+      const topicCards = [...panel.querySelectorAll('[data-menu-card]')];
+      const cards = panel.querySelector('.ys-mega-menu__cards');
       const activateTopic = (button, moveFocus = false) => {
         const topic = button.dataset.menuTopic;
         topicButtons.forEach((item) => {
@@ -169,20 +178,20 @@
           item.classList.toggle('is-active', active);
           item.setAttribute('aria-selected', String(active));
           item.tabIndex = active ? 0 : -1;
+          const chevron = item.querySelector('.ys-menu-chevron');
+          if (chevron) chevron.textContent = active ? '↗' : '→';
         });
         topicPanels.forEach((item) => {
           const active = item.dataset.menuPanel === topic;
           item.hidden = !active;
           item.classList.toggle('is-active', active);
         });
-        if (detailTitle) detailTitle.textContent = button.querySelector('span')?.textContent || '';
+        topicCards.forEach((item) => item.classList.toggle('is-active', item.dataset.menuCard === topic));
+        if (cards) cards.dataset.activeTopic = topic;
         if (moveFocus) button.focus();
       };
       topicButtons.forEach((button, index) => {
         button.addEventListener('click', () => activateTopic(button));
-        button.addEventListener('pointerenter', (event) => {
-          if (event.pointerType !== 'touch') activateTopic(button);
-        });
         button.addEventListener('keydown', (event) => {
           let nextIndex = index;
           if (event.key === 'ArrowDown') nextIndex = (index + 1) % topicButtons.length;
@@ -332,13 +341,22 @@
         const willOpen = button.getAttribute('aria-expanded') !== 'true';
         mobileMenuTopics.forEach((item) => {
           item.setAttribute('aria-expanded', 'false');
+          item.closest('.ys-mobile-menu-group')?.classList.remove('is-open');
           const itemPanel = document.getElementById(item.getAttribute('aria-controls'));
           if (itemPanel) itemPanel.hidden = true;
         });
         button.setAttribute('aria-expanded', String(willOpen));
+        button.closest('.ys-mobile-menu-group')?.classList.toggle('is-open', willOpen);
         if (panel) panel.hidden = !willOpen;
       });
     });
+    const firstMobileTopic = mobileMenuTopics[0];
+    if (firstMobileTopic) {
+      firstMobileTopic.setAttribute('aria-expanded', 'true');
+      firstMobileTopic.closest('.ys-mobile-menu-group')?.classList.add('is-open');
+      const firstMobilePanel = document.getElementById(firstMobileTopic.getAttribute('aria-controls'));
+      if (firstMobilePanel) firstMobilePanel.hidden = false;
+    }
   }
 
   const mobileLogin = document.querySelector('.menu__login [data-button-alt]');
