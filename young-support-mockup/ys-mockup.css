@@ -726,15 +726,24 @@ body.ys-mega-open .ys-mega-menu__image-wrap { transition-delay: .22s; }
   padding: clamp(11px, 1.1vw, 15px) clamp(13px, 1.2vw, 17px);
   border: 1px solid rgba(255,255,255,.22);
   border-radius: 13px;
-  background: rgba(255,255,255,.11);
+  background-color: rgba(255,255,255,.11);
+  background-image: linear-gradient(var(--white), var(--white));
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0 100%;
   color: var(--white);
   font-family: "Avenir Next", Avenir, Arial, sans-serif;
   font-size: clamp(15px, 1.25vw, 19px);
   font-weight: 700;
   line-height: 1.12;
+  transition: background-size .48s cubic-bezier(.22,.8,.24,1), color .2s ease, border-color .2s ease;
 }
 .ys-mega-menu .ys-mega-menu__panel a:hover,
-.ys-mega-menu .ys-mega-menu__panel a:focus-visible { background: rgba(255,255,255,.2); color: var(--white); }
+.ys-mega-menu .ys-mega-menu__panel a:focus-visible {
+  border-color: var(--white);
+  background-size: 100% 100%;
+  color: var(--black);
+}
 .ys-mega-menu .ys-mega-menu__link-text { padding: 0; }
 .ys-mega-menu .ys-mega-menu__link-text::after { display: none; }
 .ys-mega-menu__count {
@@ -842,6 +851,8 @@ body.ys-mega-open .ys-mega-menu__footer { transition-delay: .2s; }
   .ys-mega-menu__email,
   .ys-mega-menu__legal,
   .ys-mega-menu__image-wrap,
+  .ys-mega-menu__panel a,
+  .ys-mobile-menu-panel a,
   .header__title,
   .header__title-link,
   .header__title .ys-brand__art,
@@ -1774,14 +1785,25 @@ body.ys-mega-open .ys-mega-menu__footer { transition-delay: .2s; }
     padding: .72em .75em;
     border: 1px solid rgba(255,255,255,.2);
     border-radius: .72em;
-    background: rgba(255,255,255,.08);
+    background-color: rgba(255,255,255,.08);
+    background-image: linear-gradient(var(--white), var(--white));
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 0 100%;
     color: var(--black);
     font-size: clamp(1em, 4.2vw, 1.28em);
     font-weight: 600;
     line-height: 1.22;
     text-decoration: none;
+    transition: background-size .48s cubic-bezier(.22,.8,.24,1), color .2s ease, border-color .2s ease;
   }
   .ys-mobile-menu-group.is-open .ys-mobile-menu-panel a { color: var(--white); }
+  .ys-mobile-menu-group.is-open .ys-mobile-menu-panel a:hover,
+  .ys-mobile-menu-group.is-open .ys-mobile-menu-panel a:focus-visible {
+    border-color: var(--white);
+    background-size: 100% 100%;
+    color: var(--black);
+  }
   .menu__nav-list > .menu__nav-list-item:last-child .button__bg { background: var(--magenta); }
   .menu__nav-list > .menu__nav-list-item:last-child .button__text { color: var(--white); }
   .menu__login .button-alt {
