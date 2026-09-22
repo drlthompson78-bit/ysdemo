@@ -1,4 +1,27 @@
 (function () {
+  const addNewsAnnouncement = () => {
+    if (document.querySelector('.ys-news-announcement')) return;
+    const announcement = document.createElement('aside');
+    announcement.className = 'ys-news-announcement';
+    announcement.setAttribute('aria-label', 'Nieuws van YoungSupport');
+    announcement.innerHTML = `
+      <div class="ys-news-announcement__inner">
+        <p class="ys-news-announcement__title">YoungSupport sluit overeenkomst met Pameijer.</p>
+        <p class="ys-news-announcement__copy">Vanaf 1 oktober 2026 wordt YoungSupport onderaannemer van Stichting Pameijer.</p>
+        <a class="ys-news-announcement__link" href="./nieuws/pameijer/"><span>Lees het bericht</span><span aria-hidden="true">→</span></a>
+        <button class="ys-news-announcement__close" type="button" aria-label="Sluit nieuwsbericht"><span aria-hidden="true"></span></button>
+      </div>`;
+    announcement.querySelector('.ys-news-announcement__close')?.addEventListener('click', () => {
+      announcement.classList.add('is-closing');
+      announcement.addEventListener('transitionend', () => announcement.remove(), { once: true });
+      window.setTimeout(() => announcement.remove(), 600);
+    });
+    document.body.append(announcement);
+    requestAnimationFrame(() => announcement.classList.add('is-visible'));
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addNewsAnnouncement, { once: true });
+  else addNewsAnnouncement();
+
   // The downloaded reference was saved while the original page was scrolled.
   // Reset that captured state before Aardvark's own intro timeline starts.
   document.body.setAttribute('data-scrolling-started', 'false');
