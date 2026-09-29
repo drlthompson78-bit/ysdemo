@@ -5126,7 +5126,7 @@ function initHandwrittenTextInview() {
 }
 
 function initButtonAlt() {
-  const buttons = nextPage.querySelectorAll("[data-button-alt]");
+  const buttons = nextPage.querySelectorAll("[data-button-alt]:not(.ys-fill-control)");
 
   let mm = gsap.matchMedia();
 
@@ -5229,7 +5229,7 @@ function initButtonAlt() {
 }
 
 function initButton() {
-  const elements = nextPage.querySelectorAll("[data-button]");
+  const elements = nextPage.querySelectorAll("[data-button]:not(.ys-fill-control)");
 
   let mm = gsap.matchMedia();
 

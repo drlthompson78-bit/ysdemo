@@ -1,0 +1,55 @@
+/* Scoped trial. Keep other sections and standalone pages on the approved design. */
+.header,.hero,.menu,.ys-mega-menu{--pale-yellow:#afc9b3;--ys-fill-green:#285640;--ys-cream:#f7f3e9}
+.hero__bg{color:#afc9b3!important}
+.hero [data-hero-title],.hero [data-hero-paragraph],.hero .hero__text,
+.ys-mega-menu h2,.ys-mega-menu h3,.ys-mega-menu__card-copy strong,.menu .ys-mobile-menu-group h2{
+ font-family:ui-sans-serif,system-ui,sans-serif!important;
+}
+.hero [data-hero-title]{font-weight:700!important;letter-spacing:-.045em!important;line-height:1.02!important}
+.hero .hero__visual-img{height:100%!important;object-fit:cover!important;object-position:center 45%!important;transform:none!important}
+.hero .hero__visual::after{background:linear-gradient(170deg,#afc9b3,#f7f3e9 72%)}
+.header .button-social__bg{background-color:#afc9b3!important}
+.menu .ys-mobile-menu-panel li:nth-child(3n + 3) a{background-color:#afc9b3!important}
+.ys-fill-control{--fill:#285640;--base:#afc9b3;isolation:isolate;color:#082f62!important}
+.ys-fill-control.ys-fill-sand{--fill:#082f62;--base:#d7b889}
+.ys-fill-control,.ys-fill-control *{animation:none!important;scale:1!important;rotate:0deg!important;translate:none!important}
+.ys-fill-control .button__bg,.ys-fill-control .button-alt__bg{
+ background-color:var(--base)!important;background-image:linear-gradient(var(--fill),var(--fill))!important;
+ background-repeat:no-repeat!important;background-position:left center!important;background-size:0% 100%!important;
+ transform:none!important;transition:background-size .85s cubic-bezier(.22,.8,.24,1)!important;
+}
+.ys-fill-control:is(:hover,:focus-visible) .button__bg,.ys-fill-control:is(:hover,:focus-visible) .button-alt__bg{background-size:100% 100%!important}
+.ys-fill-control .button__text,.ys-fill-control .button-alt__text,.ys-fill-control .button-alt__icon{color:inherit!important;transform:none!important;transition:color .28s ease!important}
+.ys-fill-control:is(:hover,:focus-visible){color:#f7f3e9!important;transform:none!important}
+.ys-fill-control .button__inner,.ys-fill-control .button-alt__text-wrap,.ys-fill-control .button-alt__icon-wrap,.ys-fill-control .button-alt__icon-outer,.ys-fill-control .split-char{transform:none!important}
+.ys-fill-control:focus-visible{outline:2px solid #082f62;outline-offset:4px}
+@media(min-width:992px){
+ .ys-mega-menu__stage{grid-template-columns:minmax(230px,.9fr) minmax(270px,1.1fr) minmax(240px,1fr);gap:22px}
+ .ys-mega-menu__cards{display:flex;flex-direction:column;gap:12px}
+ .ys-mega-menu__card,.ys-mega-menu__card.is-active{flex:1;grid-area:auto!important;background:#afc9b3;color:#082f62;border-radius:18px}
+ .ys-mega-menu__card[data-menu-card="information"]{background:#d7b889}
+ .ys-mega-menu__card[data-menu-card="complaints"]{background:#afc9b3}
+ .ys-mega-menu__card.is-active{background:#082f62;color:#f7f3e9}
+ .ys-mega-menu .ys-mega-menu__topic,.ys-mega-menu .ys-mega-menu__card.is-active .ys-mega-menu__topic{height:100%;min-height:0;padding:22px;align-items:center}
+ .ys-mega-menu__card-copy strong{font-size:clamp(19px,1.7vw,28px);font-weight:700;line-height:1.15}
+ .ys-mega-menu__card-copy small{font-size:14px;line-height:1.4;color:#173e53}
+ .ys-mega-menu__card.is-active .ys-mega-menu__card-copy small{color:#f7f3e9}
+ .ys-menu-detail{background:#082f62;border-radius:22px;min-width:0;padding:26px;display:flex;align-items:center}
+ .ys-mega-menu .ys-menu-detail .ys-mega-menu__panel{position:static;width:100%;gap:12px;transform:none}
+ .ys-menu-detail h3{font-size:clamp(24px,2.2vw,34px);line-height:1.15;color:#f7f3e9;margin:0 0 18px;font-weight:700}
+ .ys-mega-menu .ys-mega-menu__panel a{background-image:linear-gradient(#afc9b3,#afc9b3);line-height:1.35;padding:16px;font-size:17px}
+ .ys-mega-menu .ys-mega-menu__panel a:hover,.ys-mega-menu .ys-mega-menu__panel a:focus-visible{border-color:#afc9b3}
+ .ys-mega-menu .ys-mega-menu__image-wrap img{object-position:center;object-fit:cover}
+}
+@media(prefers-reduced-motion:reduce){.ys-fill-control .button__bg,.ys-fill-control .button-alt__bg{transition:none!important}}
+
+.ys-approved-intro,.ys-approved-backdrop{background:#afc9b3!important}
+.ys-approved-shape{color:#afc9b3!important}
+@media(max-width:991px){
+ .menu__container{background:#afc9b3!important}
+ .menu__bg{background:#afc9b3!important;color:#789c83!important}
+ .menu__bg svg{color:#789c83!important}
+ .ys-mobile-menu-sweep{color:#afc9b3!important}
+ .ys-mobile-menu-sweep__backdrop{background:#afc9b3!important}
+}
+body.ys-mega-open .ys-news-announcement,body:has(.menu.is--active) .ys-news-announcement{visibility:hidden;pointer-events:none}

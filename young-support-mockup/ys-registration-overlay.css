@@ -1,0 +1,26 @@
+/* Registration uses the expanded menu's inset cream frame. */
+.ys-registration-window{position:fixed;inset:0;width:calc(100% - 32px);max-width:1600px;height:calc(100dvh - 32px);max-height:none;margin:auto;padding:0;border:0;border-radius:28px;background:#f7f3e9;color:#0d3261;overflow:hidden;box-shadow:0 20px 80px #082f6226;font:16px/1.5 "Avenir Next",Avenir,Arial,sans-serif}
+.ys-registration-window::backdrop{background:rgb(8 47 98 / .32);backdrop-filter:blur(3px)}
+.ys-registration-window[open]{animation:ys-registration-in .45s cubic-bezier(.22,1,.36,1)}
+.ys-registration-window.is-closing{animation:ys-registration-out .32s ease-in forwards;pointer-events:none}
+.ys-registration-window__shell{height:100%;display:flex;flex-direction:column}
+.ys-registration-window__header{display:flex;align-items:center;gap:24px;flex-shrink:0;padding:22px 32px;background:#f7f3e9}
+.ys-registration-window__brand{display:flex;align-items:center;gap:8px;width:230px;flex-shrink:0}
+.ys-registration-window__brand img:first-child{width:32%;height:auto}.ys-registration-window__brand img:last-child{width:64%;height:auto}
+.ys-registration-window__title{margin-left:auto;font-weight:700;font-size:18px}
+.ys-registration-window__close{display:flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:10px 18px;border:0;border-radius:25px;background:#dfeade;color:#0d3261;font:700 16px/1.2 "Avenir Next",Arial,sans-serif;cursor:pointer;transition:background .45s}
+.ys-registration-window__close span:last-child{font-size:30px;line-height:1}.ys-registration-window__close:hover{background:#d8b988}.ys-registration-window__close:focus-visible{outline:3px solid #0d3261;outline-offset:4px}
+.ys-registration-window__body{position:relative;flex:1;min-height:0;margin:0 24px 24px;border-radius:20px;overflow:hidden}
+.ys-registration-window iframe{display:block;width:100%;height:100%;border:0;background:#f7f3e9}
+.ys-registration-window__loading{position:absolute;inset:0;background:#f7f3e9;padding:24px;z-index:1}.ys-registration-window__loading[hidden]{display:none}.ys-registration-window__loading a{display:block;color:inherit;margin-top:16px}
+@keyframes ys-registration-in{from{clip-path:inset(0 0 100% 0 round 28px);transform:translateY(-12px)}to{clip-path:inset(0 round 28px);transform:none}}
+@keyframes ys-registration-out{to{clip-path:inset(0 0 100% 0 round 28px);transform:translateY(-12px)}}
+@media(max-width:800px){.ys-registration-window{width:calc(100% - 16px);height:calc(100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom));border-radius:24px}.ys-registration-window__header{padding:18px 16px;gap:12px}.ys-registration-window__brand{width:180px}.ys-registration-window__title{display:none}.ys-registration-window__close{margin-left:auto;width:48px;height:48px;flex-shrink:0;padding:0;background:#d8b988;border-radius:16px}.ys-registration-window__close span:first-child{display:none}.ys-registration-window__body{margin:0 8px 8px;border-radius:16px}}
+@media(prefers-reduced-motion:reduce){.ys-registration-window[open],.ys-registration-window.is-closing{animation:none}}
+/* Compact header: only the YS mark and the close control. */
+.ys-registration-window__header{padding:10px 24px;gap:16px;min-height:64px}
+.ys-registration-window__brand{width:44px;height:44px;gap:0}
+.ys-registration-window__brand img:first-child{width:100%;height:100%}
+.ys-registration-window__close{margin-left:auto;width:44px;height:44px;min-height:44px;padding:0;border-radius:14px;font-family:Arial,sans-serif}
+.ys-registration-window__body{margin:0 16px 8px;border-radius:16px}
+@media(max-width:800px){.ys-registration-window__header{padding:8px 16px;min-height:60px}.ys-registration-window__brand{width:42px;height:42px}.ys-registration-window__body{margin:0 4px 4px}.ys-registration-window__close span:first-child{display:block}}

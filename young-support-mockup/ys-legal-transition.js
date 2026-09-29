@@ -83,7 +83,13 @@
     if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
     const url = new URL(link.href, location.href);
     if (url.origin !== location.origin || !url.pathname.startsWith(base)) return;
-    const registration = url.pathname === base + 'aanmelden/';
+    const registration = /^\/young-support-mockup\/aanmelden\/?(?:index\.html)?$/.test(url.pathname);
+    if (registration && window.YSRegistrationOverlay && !link.hasAttribute('data-registration-standalone')) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      window.YSRegistrationOverlay.open(link);
+      return;
+    }
     const footerNav = !!link.closest('.ys-site-footer nav[aria-label="Navigatie in de footer"]');
     if (!footerNav && !registration && !legalPath(url.pathname) && !legalPath(location.pathname)) return;
     if (!footerNav && url.pathname === location.pathname && url.search === location.search) return;

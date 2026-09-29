@@ -167,7 +167,7 @@
                 </article>
               </div>
               <figure class="ys-mega-menu__image-wrap">
-                <img src="./young-support-menu-photo.webp" alt="Jongere en begeleider lopen samen buiten" loading="lazy">
+                <img src="./young-support-youth-documentary.png" alt="Drie jongvolwassenen in gesprek tijdens een wandeling" loading="lazy">
               </figure>
             </div>
           </div>
@@ -536,13 +536,13 @@
   if (heroImage) {
     heroImage.removeAttribute('srcset');
     heroImage.removeAttribute('sizes');
-    heroImage.alt = 'Jongere in gesprek met een begeleider van YoungSupport';
+    heroImage.alt = 'Drie jongvolwassenen in gesprek tijdens een wandeling';
 
     const heroImageQuery = window.matchMedia('(max-width: 767px)');
     const updateHeroImage = () => {
       heroImage.src = heroImageQuery.matches
-        ? './young-support-hero-mobile.png'
-        : './young-support-brochure-page.png';
+        ? './young-support-youth-documentary.png'
+        : './young-support-youth-documentary.png';
     };
     updateHeroImage();
     heroImageQuery.addEventListener?.('change', updateHeroImage);
